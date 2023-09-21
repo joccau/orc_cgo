@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # build proto
-protoc  --proto_path=proto  --cpp_out=proto   orc_proxy.proto
+protoc  --proto_path=proto  --cpp_out=src   orc_proxy.proto
 
 #build proxy
 export CPATH=orc-1.8.5/c++/include:orc-1.8.5/build/c++/include

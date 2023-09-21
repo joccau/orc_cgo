@@ -1,9 +1,18 @@
 #include "orc_proxy.h"
 #include "orc/OrcFile.hh"
 
+#include <string.h>
 
+using namespace std;
+
+void read_file_test(string path){
+    printf("path=%s", path.c_str());
+}
 
 reader* read_file(const char* path){
+
+    printf("path=%s", path);
+
     orc::ReaderOptions readerOpts;
     ORC_UNIQUE_PTR<orc::Reader> r = orc::createReader(orc::readFile(path), readerOpts);
 

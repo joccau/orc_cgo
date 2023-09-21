@@ -6,7 +6,7 @@ protoc  --proto_path=proto  --cpp_out=src   orc_proxy.proto
 #build proxy
 export CPATH=orc-1.8.5/c++/include:orc-1.8.5/build/c++/include
 
-g++  -std=c++11 -c ./src/*.c 
+g++  -std=c++11 -c ./src/*.cc 
 ar -r liborcproxy.a  *.o
 mv ./liborcproxy.a ./orc_lib/
 

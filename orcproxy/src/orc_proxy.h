@@ -16,6 +16,7 @@ typedef void reader;
 
 
 // definition of interface.
+void read_file_test(const char* path);
 reader* read_file(const char* path);
 row_reader* create_row_reader(reader* ptr);
 

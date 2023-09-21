@@ -1,0 +1,121 @@
+name: Build and test
+
+on:
+  push:
+    paths-ignore:
+    - 'docker'
+    - 'site/**'
+    branches:
+    - branch-1.8
+  pull_request:
+    paths-ignore:
+    - 'docker'
+    - 'site/**'
+    branches:
+    - branch-1.8
+
+jobs:
+  build:
+    name: "Java ${{ matrix.java }} and ${{ matrix.cxx }} on ${{ matrix.os }}"
+    runs-on: ${{ matrix.os }}
+    strategy:
+      fail-fast: false
+      matrix:
+        os:
+          - ubuntu-20.04
+          - ubuntu-22.04
+          - macos-11
+          - macos-12
+        java:
+          - 8
+          - 11
+          - 17
+        cxx:
+          - clang++
+        include:
+          - os: ubuntu-20.04
+            java: 8
+            cxx: g++
+          - os: ubuntu-20.04
+            java: 18
+            cxx: g++
+    env:
+      MAVEN_OPTS: -Xmx2g
+      MAVEN_SKIP_RC: true
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Cache Maven local repository
+      uses: actions/cache@v2
+      with:
+        path: ~/.m2/repository
+        key: ${{ matrix.java }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ matrix.java }}-maven-
+    - name: Install Java ${{ matrix.java }}
+      uses: actions/setup-java@v3
+      with:
+        distribution: temurin
+        java-version: ${{ matrix.java }}
+    - name: "Test"
+      run: |
+        mkdir -p ~/.m2
+        mkdir build
+        cd build
+        if [ "${{ matrix.os }}" = "ubuntu-20.04" ]; then
+          cmake -DANALYZE_JAVA=ON -DCMAKE_CXX_COMPILER=${{ matrix.cxx }} -DSTOP_BUILD_ON_WARNING=OFF ..
+        else
+          cmake -DANALYZE_JAVA=ON -DOPENSSL_ROOT_DIR=`brew --prefix openssl@1.1` ..
+        fi
+        make package test-out
+    - name: Step on failure
+      if: ${{ failure() }}
+      run: |
+        cat /home/runner/work/orc/orc/build/java/rat.txt
+
+  windows:
+    name: "Build on Windows"
+    runs-on: windows-2019
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Add msbuild to PATH
+      uses: microsoft/setup-msbuild@v1.1
+    - name: "Test"
+      run: |
+        mkdir build
+        cd build
+        cmake .. -G "Visual Studio 14 2015 Win64" -DCMAKE_BUILD_TYPE=Debug -DBUILD_LIBHDFSPP=OFF -DBUILD_TOOLS=OFF -DBUILD_JAVA=OFF
+        cmake --build . --config Debug
+        ctest -C Debug --output-on-failure
+
+  doc:
+    name: "Javadoc generation"
+    runs-on: ubuntu-20.04
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+    - name: Install Java 8
+      uses: actions/setup-java@v3
+      with:
+        distribution: temurin
+        java-version: 8
+    - name: "javadoc"
+      run: |
+        mkdir -p ~/.m2
+        cd java
+        mvn install -DskipTests
+        mvn javadoc:javadoc
+
+  license-check:
+    name: "License Check"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Check license header
+        uses: apache/skywalking-eyes@main
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          config: .github/.licenserc.yaml

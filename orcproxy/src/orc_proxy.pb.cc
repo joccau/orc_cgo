@@ -20,8 +20,7 @@ PROTOBUF_PRAGMA_INIT_SEG
 namespace _pb = ::PROTOBUF_NAMESPACE_ID;
 namespace _pbi = _pb::internal;
 
-namespace orc_proxy {
-namespace proto {
+namespace orc_proto {
 PROTOBUF_CONSTEXPR Field::Field(
     ::_pbi::ConstantInitialized)
   : value_(&::_pbi::fixed_address_empty_string, ::_pbi::ConstantInitialized{})
@@ -49,60 +48,59 @@ struct RowDefaultTypeInternal {
   };
 };
 PROTOBUF_ATTRIBUTE_NO_DESTROY PROTOBUF_CONSTINIT PROTOBUF_ATTRIBUTE_INIT_PRIORITY1 RowDefaultTypeInternal _Row_default_instance_;
-}  // namespace proto
-}  // namespace orc_proxy
+}  // namespace orc_proto
 static ::_pb::Metadata file_level_metadata_orc_5fproxy_2eproto[2];
 static const ::_pb::EnumDescriptor* file_level_enum_descriptors_orc_5fproxy_2eproto[1];
 static constexpr ::_pb::ServiceDescriptor const** file_level_service_descriptors_orc_5fproxy_2eproto = nullptr;
 
 const uint32_t TableStruct_orc_5fproxy_2eproto::offsets[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  PROTOBUF_FIELD_OFFSET(::orc_proxy::proto::Field, _has_bits_),
-  PROTOBUF_FIELD_OFFSET(::orc_proxy::proto::Field, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::orc_proto::Field, _has_bits_),
+  PROTOBUF_FIELD_OFFSET(::orc_proto::Field, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::orc_proxy::proto::Field, kind_),
-  PROTOBUF_FIELD_OFFSET(::orc_proxy::proto::Field, length_),
-  PROTOBUF_FIELD_OFFSET(::orc_proxy::proto::Field, value_),
+  PROTOBUF_FIELD_OFFSET(::orc_proto::Field, kind_),
+  PROTOBUF_FIELD_OFFSET(::orc_proto::Field, length_),
+  PROTOBUF_FIELD_OFFSET(::orc_proto::Field, value_),
   1,
   2,
   0,
   ~0u,  // no _has_bits_
-  PROTOBUF_FIELD_OFFSET(::orc_proxy::proto::Row, _internal_metadata_),
+  PROTOBUF_FIELD_OFFSET(::orc_proto::Row, _internal_metadata_),
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
   ~0u,  // no _inlined_string_donated_
-  PROTOBUF_FIELD_OFFSET(::orc_proxy::proto::Row, field_),
+  PROTOBUF_FIELD_OFFSET(::orc_proto::Row, field_),
 };
 static const ::_pbi::MigrationSchema schemas[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) = {
-  { 0, 9, -1, sizeof(::orc_proxy::proto::Field)},
-  { 12, -1, -1, sizeof(::orc_proxy::proto::Row)},
+  { 0, 9, -1, sizeof(::orc_proto::Field)},
+  { 12, -1, -1, sizeof(::orc_proto::Row)},
 };
 
 static const ::_pb::Message* const file_default_instances[] = {
-  &::orc_proxy::proto::_Field_default_instance_._instance,
-  &::orc_proxy::proto::_Row_default_instance_._instance,
+  &::orc_proto::_Field_default_instance_._instance,
+  &::orc_proto::_Row_default_instance_._instance,
 };
 
 const char descriptor_table_protodef_orc_5fproxy_2eproto[] PROTOBUF_SECTION_VARIABLE(protodesc_cold) =
-  "\n\017orc_proxy.proto\022\017orc_proxy.proto\"\351\002\n\005F"
-  "ield\022.\n\004kind\030\001 \001(\0162\033.orc_proxy.proto.Fie"
-  "ld.KindH\000\210\001\001\022\023\n\006length\030\002 \001(\rH\001\210\001\001\022\022\n\005val"
-  "ue\030\003 \001(\014H\002\210\001\001\"\350\001\n\004Kind\022\013\n\007BOOLEAN\020\000\022\010\n\004B"
-  "YTE\020\001\022\t\n\005SHORT\020\002\022\007\n\003INT\020\003\022\010\n\004LONG\020\004\022\t\n\005F"
-  "LOAT\020\005\022\n\n\006DOUBLE\020\006\022\n\n\006STRING\020\007\022\n\n\006BINARY"
-  "\020\010\022\r\n\tTIMESTAMP\020\t\022\010\n\004LIST\020\n\022\007\n\003MAP\020\013\022\n\n\006"
-  "STRUCT\020\014\022\t\n\005UNION\020\r\022\013\n\007DECIMAL\020\016\022\010\n\004DATE"
-  "\020\017\022\013\n\007VARCHAR\020\020\022\010\n\004CHAR\020\021\022\025\n\021TIMESTAMP_I"
-  "NSTANT\020\022B\007\n\005_kindB\t\n\007_lengthB\010\n\006_value\","
-  "\n\003Row\022%\n\005field\030\001 \003(\0132\026.orc_proxy.proto.F"
-  "ieldb\006proto3"
+  "\n\017orc_proxy.proto\022\torc_proto\"\343\002\n\005Field\022("
+  "\n\004kind\030\001 \001(\0162\025.orc_proto.Field.KindH\000\210\001\001"
+  "\022\023\n\006length\030\002 \001(\rH\001\210\001\001\022\022\n\005value\030\003 \001(\014H\002\210\001"
+  "\001\"\350\001\n\004Kind\022\013\n\007BOOLEAN\020\000\022\010\n\004BYTE\020\001\022\t\n\005SHO"
+  "RT\020\002\022\007\n\003INT\020\003\022\010\n\004LONG\020\004\022\t\n\005FLOAT\020\005\022\n\n\006DO"
+  "UBLE\020\006\022\n\n\006STRING\020\007\022\n\n\006BINARY\020\010\022\r\n\tTIMEST"
+  "AMP\020\t\022\010\n\004LIST\020\n\022\007\n\003MAP\020\013\022\n\n\006STRUCT\020\014\022\t\n\005"
+  "UNION\020\r\022\013\n\007DECIMAL\020\016\022\010\n\004DATE\020\017\022\013\n\007VARCHA"
+  "R\020\020\022\010\n\004CHAR\020\021\022\025\n\021TIMESTAMP_INSTANT\020\022B\007\n\005"
+  "_kindB\t\n\007_lengthB\010\n\006_value\"&\n\003Row\022\037\n\005fie"
+  "ld\030\001 \003(\0132\020.orc_proto.FieldB\rZ\013./orc_prot"
+  "ob\006proto3"
   ;
 static ::_pbi::once_flag descriptor_table_orc_5fproxy_2eproto_once;
 const ::_pbi::DescriptorTable descriptor_table_orc_5fproxy_2eproto = {
-    false, false, 452, descriptor_table_protodef_orc_5fproxy_2eproto,
+    false, false, 449, descriptor_table_protodef_orc_5fproxy_2eproto,
     "orc_proxy.proto",
     &descriptor_table_orc_5fproxy_2eproto_once, nullptr, 0, 2,
     schemas, file_default_instances, TableStruct_orc_5fproxy_2eproto::offsets,
@@ -115,8 +113,7 @@ PROTOBUF_ATTRIBUTE_WEAK const ::_pbi::DescriptorTable* descriptor_table_orc_5fpr
 
 // Force running AddDescriptors() at dynamic initialization time.
 PROTOBUF_ATTRIBUTE_INIT_PRIORITY2 static ::_pbi::AddDescriptorsRunner dynamic_init_dummy_orc_5fproxy_2eproto(&descriptor_table_orc_5fproxy_2eproto);
-namespace orc_proxy {
-namespace proto {
+namespace orc_proto {
 const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Field_Kind_descriptor() {
   ::PROTOBUF_NAMESPACE_ID::internal::AssignDescriptors(&descriptor_table_orc_5fproxy_2eproto);
   return file_level_enum_descriptors_orc_5fproxy_2eproto[0];
@@ -193,7 +190,7 @@ Field::Field(::PROTOBUF_NAMESPACE_ID::Arena* arena,
                          bool is_message_owned)
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:orc_proxy.proto.Field)
+  // @@protoc_insertion_point(arena_constructor:orc_proto.Field)
 }
 Field::Field(const Field& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
@@ -210,7 +207,7 @@ Field::Field(const Field& from)
   ::memcpy(&kind_, &from.kind_,
     static_cast<size_t>(reinterpret_cast<char*>(&length_) -
     reinterpret_cast<char*>(&kind_)) + sizeof(length_));
-  // @@protoc_insertion_point(copy_constructor:orc_proxy.proto.Field)
+  // @@protoc_insertion_point(copy_constructor:orc_proto.Field)
 }
 
 inline void Field::SharedCtor() {
@@ -225,7 +222,7 @@ value_.InitDefault();
 }
 
 Field::~Field() {
-  // @@protoc_insertion_point(destructor:orc_proxy.proto.Field)
+  // @@protoc_insertion_point(destructor:orc_proto.Field)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -243,7 +240,7 @@ void Field::SetCachedSize(int size) const {
 }
 
 void Field::Clear() {
-// @@protoc_insertion_point(message_clear_start:orc_proxy.proto.Field)
+// @@protoc_insertion_point(message_clear_start:orc_proto.Field)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -268,12 +265,12 @@ const char* Field::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // optional .orc_proxy.proto.Field.Kind kind = 1;
+      // optional .orc_proto.Field.Kind kind = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 8)) {
           uint64_t val = ::PROTOBUF_NAMESPACE_ID::internal::ReadVarint64(&ptr);
           CHK_(ptr);
-          _internal_set_kind(static_cast<::orc_proxy::proto::Field_Kind>(val));
+          _internal_set_kind(static_cast<::orc_proto::Field_Kind>(val));
         } else
           goto handle_unusual;
         continue;
@@ -321,11 +318,11 @@ failure:
 
 uint8_t* Field::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:orc_proxy.proto.Field)
+  // @@protoc_insertion_point(serialize_to_array_start:orc_proto.Field)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // optional .orc_proxy.proto.Field.Kind kind = 1;
+  // optional .orc_proto.Field.Kind kind = 1;
   if (_internal_has_kind()) {
     target = stream->EnsureSpace(target);
     target = ::_pbi::WireFormatLite::WriteEnumToArray(
@@ -348,12 +345,12 @@ uint8_t* Field::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:orc_proxy.proto.Field)
+  // @@protoc_insertion_point(serialize_to_array_end:orc_proto.Field)
   return target;
 }
 
 size_t Field::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:orc_proxy.proto.Field)
+// @@protoc_insertion_point(message_byte_size_start:orc_proto.Field)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
@@ -369,7 +366,7 @@ size_t Field::ByteSizeLong() const {
           this->_internal_value());
     }
 
-    // optional .orc_proxy.proto.Field.Kind kind = 1;
+    // optional .orc_proto.Field.Kind kind = 1;
     if (cached_has_bits & 0x00000002u) {
       total_size += 1 +
         ::_pbi::WireFormatLite::EnumSize(this->_internal_kind());
@@ -398,7 +395,7 @@ void Field::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void Field::MergeFrom(const Field& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:orc_proxy.proto.Field)
+// @@protoc_insertion_point(class_specific_merge_from_start:orc_proto.Field)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -420,7 +417,7 @@ void Field::MergeFrom(const Field& from) {
 }
 
 void Field::CopyFrom(const Field& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:orc_proxy.proto.Field)
+// @@protoc_insertion_point(class_specific_copy_from_start:orc_proto.Field)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -465,20 +462,20 @@ Row::Row(::PROTOBUF_NAMESPACE_ID::Arena* arena,
   : ::PROTOBUF_NAMESPACE_ID::Message(arena, is_message_owned),
   field_(arena) {
   SharedCtor();
-  // @@protoc_insertion_point(arena_constructor:orc_proxy.proto.Row)
+  // @@protoc_insertion_point(arena_constructor:orc_proto.Row)
 }
 Row::Row(const Row& from)
   : ::PROTOBUF_NAMESPACE_ID::Message(),
       field_(from.field_) {
   _internal_metadata_.MergeFrom<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(from._internal_metadata_);
-  // @@protoc_insertion_point(copy_constructor:orc_proxy.proto.Row)
+  // @@protoc_insertion_point(copy_constructor:orc_proto.Row)
 }
 
 inline void Row::SharedCtor() {
 }
 
 Row::~Row() {
-  // @@protoc_insertion_point(destructor:orc_proxy.proto.Row)
+  // @@protoc_insertion_point(destructor:orc_proto.Row)
   if (auto *arena = _internal_metadata_.DeleteReturnArena<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>()) {
   (void)arena;
     return;
@@ -495,7 +492,7 @@ void Row::SetCachedSize(int size) const {
 }
 
 void Row::Clear() {
-// @@protoc_insertion_point(message_clear_start:orc_proxy.proto.Row)
+// @@protoc_insertion_point(message_clear_start:orc_proto.Row)
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
@@ -510,7 +507,7 @@ const char* Row::_InternalParse(const char* ptr, ::_pbi::ParseContext* ctx) {
     uint32_t tag;
     ptr = ::_pbi::ReadTag(ptr, &tag);
     switch (tag >> 3) {
-      // repeated .orc_proxy.proto.Field field = 1;
+      // repeated .orc_proto.Field field = 1;
       case 1:
         if (PROTOBUF_PREDICT_TRUE(static_cast<uint8_t>(tag) == 10)) {
           ptr -= 1;
@@ -548,11 +545,11 @@ failure:
 
 uint8_t* Row::_InternalSerialize(
     uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const {
-  // @@protoc_insertion_point(serialize_to_array_start:orc_proxy.proto.Row)
+  // @@protoc_insertion_point(serialize_to_array_start:orc_proto.Row)
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .orc_proxy.proto.Field field = 1;
+  // repeated .orc_proto.Field field = 1;
   for (unsigned i = 0,
       n = static_cast<unsigned>(this->_internal_field_size()); i < n; i++) {
     const auto& repfield = this->_internal_field(i);
@@ -564,19 +561,19 @@ uint8_t* Row::_InternalSerialize(
     target = ::_pbi::WireFormat::InternalSerializeUnknownFieldsToArray(
         _internal_metadata_.unknown_fields<::PROTOBUF_NAMESPACE_ID::UnknownFieldSet>(::PROTOBUF_NAMESPACE_ID::UnknownFieldSet::default_instance), target, stream);
   }
-  // @@protoc_insertion_point(serialize_to_array_end:orc_proxy.proto.Row)
+  // @@protoc_insertion_point(serialize_to_array_end:orc_proto.Row)
   return target;
 }
 
 size_t Row::ByteSizeLong() const {
-// @@protoc_insertion_point(message_byte_size_start:orc_proxy.proto.Row)
+// @@protoc_insertion_point(message_byte_size_start:orc_proto.Row)
   size_t total_size = 0;
 
   uint32_t cached_has_bits = 0;
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  // repeated .orc_proxy.proto.Field field = 1;
+  // repeated .orc_proto.Field field = 1;
   total_size += 1UL * this->_internal_field_size();
   for (const auto& msg : this->field_) {
     total_size +=
@@ -600,7 +597,7 @@ void Row::MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to,
 
 
 void Row::MergeFrom(const Row& from) {
-// @@protoc_insertion_point(class_specific_merge_from_start:orc_proxy.proto.Row)
+// @@protoc_insertion_point(class_specific_merge_from_start:orc_proto.Row)
   GOOGLE_DCHECK_NE(&from, this);
   uint32_t cached_has_bits = 0;
   (void) cached_has_bits;
@@ -610,7 +607,7 @@ void Row::MergeFrom(const Row& from) {
 }
 
 void Row::CopyFrom(const Row& from) {
-// @@protoc_insertion_point(class_specific_copy_from_start:orc_proxy.proto.Row)
+// @@protoc_insertion_point(class_specific_copy_from_start:orc_proto.Row)
   if (&from == this) return;
   Clear();
   MergeFrom(from);
@@ -633,16 +630,15 @@ void Row::InternalSwap(Row* other) {
 }
 
 // @@protoc_insertion_point(namespace_scope)
-}  // namespace proto
-}  // namespace orc_proxy
+}  // namespace orc_proto
 PROTOBUF_NAMESPACE_OPEN
-template<> PROTOBUF_NOINLINE ::orc_proxy::proto::Field*
-Arena::CreateMaybeMessage< ::orc_proxy::proto::Field >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::orc_proxy::proto::Field >(arena);
+template<> PROTOBUF_NOINLINE ::orc_proto::Field*
+Arena::CreateMaybeMessage< ::orc_proto::Field >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::orc_proto::Field >(arena);
 }
-template<> PROTOBUF_NOINLINE ::orc_proxy::proto::Row*
-Arena::CreateMaybeMessage< ::orc_proxy::proto::Row >(Arena* arena) {
-  return Arena::CreateMessageInternal< ::orc_proxy::proto::Row >(arena);
+template<> PROTOBUF_NOINLINE ::orc_proto::Row*
+Arena::CreateMaybeMessage< ::orc_proto::Row >(Arena* arena) {
+  return Arena::CreateMessageInternal< ::orc_proto::Row >(arena);
 }
 PROTOBUF_NAMESPACE_CLOSE
 

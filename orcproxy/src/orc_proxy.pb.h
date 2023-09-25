@@ -45,22 +45,19 @@ struct TableStruct_orc_5fproxy_2eproto {
   static const uint32_t offsets[];
 };
 extern const ::PROTOBUF_NAMESPACE_ID::internal::DescriptorTable descriptor_table_orc_5fproxy_2eproto;
-namespace orc_proxy {
-namespace proto {
+namespace orc_proto {
 class Field;
 struct FieldDefaultTypeInternal;
 extern FieldDefaultTypeInternal _Field_default_instance_;
 class Row;
 struct RowDefaultTypeInternal;
 extern RowDefaultTypeInternal _Row_default_instance_;
-}  // namespace proto
-}  // namespace orc_proxy
+}  // namespace orc_proto
 PROTOBUF_NAMESPACE_OPEN
-template<> ::orc_proxy::proto::Field* Arena::CreateMaybeMessage<::orc_proxy::proto::Field>(Arena*);
-template<> ::orc_proxy::proto::Row* Arena::CreateMaybeMessage<::orc_proxy::proto::Row>(Arena*);
+template<> ::orc_proto::Field* Arena::CreateMaybeMessage<::orc_proto::Field>(Arena*);
+template<> ::orc_proto::Row* Arena::CreateMaybeMessage<::orc_proto::Row>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
-namespace orc_proxy {
-namespace proto {
+namespace orc_proto {
 
 enum Field_Kind : int {
   Field_Kind_BOOLEAN = 0,
@@ -107,7 +104,7 @@ inline bool Field_Kind_Parse(
 // ===================================================================
 
 class Field final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:orc_proxy.proto.Field) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:orc_proto.Field) */ {
  public:
   inline Field() : Field(nullptr) {}
   ~Field() override;
@@ -208,7 +205,7 @@ class Field final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "orc_proxy.proto.Field";
+    return "orc_proto.Field";
   }
   protected:
   explicit Field(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -311,17 +308,17 @@ class Field final :
   std::string* _internal_mutable_value();
   public:
 
-  // optional .orc_proxy.proto.Field.Kind kind = 1;
+  // optional .orc_proto.Field.Kind kind = 1;
   bool has_kind() const;
   private:
   bool _internal_has_kind() const;
   public:
   void clear_kind();
-  ::orc_proxy::proto::Field_Kind kind() const;
-  void set_kind(::orc_proxy::proto::Field_Kind value);
+  ::orc_proto::Field_Kind kind() const;
+  void set_kind(::orc_proto::Field_Kind value);
   private:
-  ::orc_proxy::proto::Field_Kind _internal_kind() const;
-  void _internal_set_kind(::orc_proxy::proto::Field_Kind value);
+  ::orc_proto::Field_Kind _internal_kind() const;
+  void _internal_set_kind(::orc_proto::Field_Kind value);
   public:
 
   // optional uint32 length = 2;
@@ -337,7 +334,7 @@ class Field final :
   void _internal_set_length(uint32_t value);
   public:
 
-  // @@protoc_insertion_point(class_scope:orc_proxy.proto.Field)
+  // @@protoc_insertion_point(class_scope:orc_proto.Field)
  private:
   class _Internal;
 
@@ -354,7 +351,7 @@ class Field final :
 // -------------------------------------------------------------------
 
 class Row final :
-    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:orc_proxy.proto.Row) */ {
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:orc_proto.Row) */ {
  public:
   inline Row() : Row(nullptr) {}
   ~Row() override;
@@ -455,7 +452,7 @@ class Row final :
   private:
   friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
   static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
-    return "orc_proxy.proto.Row";
+    return "orc_proto.Row";
   }
   protected:
   explicit Row(::PROTOBUF_NAMESPACE_ID::Arena* arena,
@@ -474,32 +471,32 @@ class Row final :
   enum : int {
     kFieldFieldNumber = 1,
   };
-  // repeated .orc_proxy.proto.Field field = 1;
+  // repeated .orc_proto.Field field = 1;
   int field_size() const;
   private:
   int _internal_field_size() const;
   public:
   void clear_field();
-  ::orc_proxy::proto::Field* mutable_field(int index);
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::orc_proxy::proto::Field >*
+  ::orc_proto::Field* mutable_field(int index);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::orc_proto::Field >*
       mutable_field();
   private:
-  const ::orc_proxy::proto::Field& _internal_field(int index) const;
-  ::orc_proxy::proto::Field* _internal_add_field();
+  const ::orc_proto::Field& _internal_field(int index) const;
+  ::orc_proto::Field* _internal_add_field();
   public:
-  const ::orc_proxy::proto::Field& field(int index) const;
-  ::orc_proxy::proto::Field* add_field();
-  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::orc_proxy::proto::Field >&
+  const ::orc_proto::Field& field(int index) const;
+  ::orc_proto::Field* add_field();
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::orc_proto::Field >&
       field() const;
 
-  // @@protoc_insertion_point(class_scope:orc_proxy.proto.Row)
+  // @@protoc_insertion_point(class_scope:orc_proto.Row)
  private:
   class _Internal;
 
   template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
   typedef void InternalArenaConstructable_;
   typedef void DestructorSkippable_;
-  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::orc_proxy::proto::Field > field_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::orc_proto::Field > field_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   friend struct ::TableStruct_orc_5fproxy_2eproto;
 };
@@ -514,7 +511,7 @@ class Row final :
 #endif  // __GNUC__
 // Field
 
-// optional .orc_proxy.proto.Field.Kind kind = 1;
+// optional .orc_proto.Field.Kind kind = 1;
 inline bool Field::_internal_has_kind() const {
   bool value = (_has_bits_[0] & 0x00000002u) != 0;
   return value;
@@ -526,20 +523,20 @@ inline void Field::clear_kind() {
   kind_ = 0;
   _has_bits_[0] &= ~0x00000002u;
 }
-inline ::orc_proxy::proto::Field_Kind Field::_internal_kind() const {
-  return static_cast< ::orc_proxy::proto::Field_Kind >(kind_);
+inline ::orc_proto::Field_Kind Field::_internal_kind() const {
+  return static_cast< ::orc_proto::Field_Kind >(kind_);
 }
-inline ::orc_proxy::proto::Field_Kind Field::kind() const {
-  // @@protoc_insertion_point(field_get:orc_proxy.proto.Field.kind)
+inline ::orc_proto::Field_Kind Field::kind() const {
+  // @@protoc_insertion_point(field_get:orc_proto.Field.kind)
   return _internal_kind();
 }
-inline void Field::_internal_set_kind(::orc_proxy::proto::Field_Kind value) {
+inline void Field::_internal_set_kind(::orc_proto::Field_Kind value) {
   _has_bits_[0] |= 0x00000002u;
   kind_ = value;
 }
-inline void Field::set_kind(::orc_proxy::proto::Field_Kind value) {
+inline void Field::set_kind(::orc_proto::Field_Kind value) {
   _internal_set_kind(value);
-  // @@protoc_insertion_point(field_set:orc_proxy.proto.Field.kind)
+  // @@protoc_insertion_point(field_set:orc_proto.Field.kind)
 }
 
 // optional uint32 length = 2;
@@ -558,7 +555,7 @@ inline uint32_t Field::_internal_length() const {
   return length_;
 }
 inline uint32_t Field::length() const {
-  // @@protoc_insertion_point(field_get:orc_proxy.proto.Field.length)
+  // @@protoc_insertion_point(field_get:orc_proto.Field.length)
   return _internal_length();
 }
 inline void Field::_internal_set_length(uint32_t value) {
@@ -567,7 +564,7 @@ inline void Field::_internal_set_length(uint32_t value) {
 }
 inline void Field::set_length(uint32_t value) {
   _internal_set_length(value);
-  // @@protoc_insertion_point(field_set:orc_proxy.proto.Field.length)
+  // @@protoc_insertion_point(field_set:orc_proto.Field.length)
 }
 
 // optional bytes value = 3;
@@ -583,7 +580,7 @@ inline void Field::clear_value() {
   _has_bits_[0] &= ~0x00000001u;
 }
 inline const std::string& Field::value() const {
-  // @@protoc_insertion_point(field_get:orc_proxy.proto.Field.value)
+  // @@protoc_insertion_point(field_get:orc_proto.Field.value)
   return _internal_value();
 }
 template <typename ArgT0, typename... ArgT>
@@ -591,11 +588,11 @@ inline PROTOBUF_ALWAYS_INLINE
 void Field::set_value(ArgT0&& arg0, ArgT... args) {
  _has_bits_[0] |= 0x00000001u;
  value_.SetBytes(static_cast<ArgT0 &&>(arg0), args..., GetArenaForAllocation());
-  // @@protoc_insertion_point(field_set:orc_proxy.proto.Field.value)
+  // @@protoc_insertion_point(field_set:orc_proto.Field.value)
 }
 inline std::string* Field::mutable_value() {
   std::string* _s = _internal_mutable_value();
-  // @@protoc_insertion_point(field_mutable:orc_proxy.proto.Field.value)
+  // @@protoc_insertion_point(field_mutable:orc_proto.Field.value)
   return _s;
 }
 inline const std::string& Field::_internal_value() const {
@@ -610,7 +607,7 @@ inline std::string* Field::_internal_mutable_value() {
   return value_.Mutable(GetArenaForAllocation());
 }
 inline std::string* Field::release_value() {
-  // @@protoc_insertion_point(field_release:orc_proxy.proto.Field.value)
+  // @@protoc_insertion_point(field_release:orc_proto.Field.value)
   if (!_internal_has_value()) {
     return nullptr;
   }
@@ -635,14 +632,14 @@ inline void Field::set_allocated_value(std::string* value) {
     value_.Set("", GetArenaForAllocation());
   }
 #endif // PROTOBUF_FORCE_COPY_DEFAULT_STRING
-  // @@protoc_insertion_point(field_set_allocated:orc_proxy.proto.Field.value)
+  // @@protoc_insertion_point(field_set_allocated:orc_proto.Field.value)
 }
 
 // -------------------------------------------------------------------
 
 // Row
 
-// repeated .orc_proxy.proto.Field field = 1;
+// repeated .orc_proto.Field field = 1;
 inline int Row::_internal_field_size() const {
   return field_.size();
 }
@@ -652,33 +649,33 @@ inline int Row::field_size() const {
 inline void Row::clear_field() {
   field_.Clear();
 }
-inline ::orc_proxy::proto::Field* Row::mutable_field(int index) {
-  // @@protoc_insertion_point(field_mutable:orc_proxy.proto.Row.field)
+inline ::orc_proto::Field* Row::mutable_field(int index) {
+  // @@protoc_insertion_point(field_mutable:orc_proto.Row.field)
   return field_.Mutable(index);
 }
-inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::orc_proxy::proto::Field >*
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::orc_proto::Field >*
 Row::mutable_field() {
-  // @@protoc_insertion_point(field_mutable_list:orc_proxy.proto.Row.field)
+  // @@protoc_insertion_point(field_mutable_list:orc_proto.Row.field)
   return &field_;
 }
-inline const ::orc_proxy::proto::Field& Row::_internal_field(int index) const {
+inline const ::orc_proto::Field& Row::_internal_field(int index) const {
   return field_.Get(index);
 }
-inline const ::orc_proxy::proto::Field& Row::field(int index) const {
-  // @@protoc_insertion_point(field_get:orc_proxy.proto.Row.field)
+inline const ::orc_proto::Field& Row::field(int index) const {
+  // @@protoc_insertion_point(field_get:orc_proto.Row.field)
   return _internal_field(index);
 }
-inline ::orc_proxy::proto::Field* Row::_internal_add_field() {
+inline ::orc_proto::Field* Row::_internal_add_field() {
   return field_.Add();
 }
-inline ::orc_proxy::proto::Field* Row::add_field() {
-  ::orc_proxy::proto::Field* _add = _internal_add_field();
-  // @@protoc_insertion_point(field_add:orc_proxy.proto.Row.field)
+inline ::orc_proto::Field* Row::add_field() {
+  ::orc_proto::Field* _add = _internal_add_field();
+  // @@protoc_insertion_point(field_add:orc_proto.Row.field)
   return _add;
 }
-inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::orc_proxy::proto::Field >&
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField< ::orc_proto::Field >&
 Row::field() const {
-  // @@protoc_insertion_point(field_list:orc_proxy.proto.Row.field)
+  // @@protoc_insertion_point(field_list:orc_proto.Row.field)
   return field_;
 }
 
@@ -690,15 +687,14 @@ Row::field() const {
 
 // @@protoc_insertion_point(namespace_scope)
 
-}  // namespace proto
-}  // namespace orc_proxy
+}  // namespace orc_proto
 
 PROTOBUF_NAMESPACE_OPEN
 
-template <> struct is_proto_enum< ::orc_proxy::proto::Field_Kind> : ::std::true_type {};
+template <> struct is_proto_enum< ::orc_proto::Field_Kind> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::orc_proxy::proto::Field_Kind>() {
-  return ::orc_proxy::proto::Field_Kind_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::orc_proto::Field_Kind>() {
+  return ::orc_proto::Field_Kind_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

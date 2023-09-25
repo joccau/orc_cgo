@@ -1,7 +1,9 @@
 
 syntax = "proto3";
 
-package orc_proxy.proto;
+package orc_proto;
+
+option go_package = "./orc_proto";
 
 // Field represents a field in a row;
 message Field {

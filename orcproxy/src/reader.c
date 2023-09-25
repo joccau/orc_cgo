@@ -5,8 +5,8 @@
 
 using namespace std;
 
-void read_file_test(string path){
-    printf("path=%s", path.c_str());
+void read_file_test(const char* path){
+    printf("path=%s", path);
 }
 
 reader* read_file(const char* path){

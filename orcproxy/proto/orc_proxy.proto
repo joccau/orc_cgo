@@ -1,9 +1,7 @@
 
-syntax = "proto2";
+syntax = "proto3";
 
 package orc_proxy.proto;
-
-option go_package = "";
 
 // Field represents a field in a row;
 message Field {

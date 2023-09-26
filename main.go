@@ -1,12 +1,12 @@
 package main
 
 /*
-#cgo CFLAGS: -Wall  -I./orcproxy/ -I./orcproxy/src/
+#cgo CFLAGS: -Wall  -I./orcwrap/ -I./orcwrap/src/
 
-#cgo LDFLAGS: -L./orcproxy/orc_lib -L./orcproxy/libs -L./orcproxy/orc-1.8.5/build/c++/libs/thirdparty  -lorcproxy -lorc -lhdfspp_static  -lrpc -lcommon  -lsasldb -lcrypto -lsnappy -lzstd -lz -llz4 -lprotobuf -lprotoc -lstdc++
+#cgo LDFLAGS: -L./orcwrap/orc_lib -L./orcwrap/libs -L./orcwrap/orc-1.8.5/build/c++/libs/thirdparty  -lorcwrap -lorc -lhdfspp_static  -lrpc -lcommon  -lsasldb -lcrypto -lsnappy -lzstd -lz -llz4 -lprotobuf -lprotoc -lstdc++
 
 #include <stdlib.h>
-#include "orc_proxy.h"
+#include "orc_wrap.h"
 */
 import "C"
 
@@ -25,7 +25,7 @@ func case1() {
 }
 
 func read() {
-	C.read_file_test(C.CString("./orcproxy/orc-1.8.5/examples/TestOrcFile.test1.orc"))
+	C.read_file_test(C.CString("./orcwrap/orc-1.8.5/examples/TestOrcFile.test1.orc"))
 }
 
 func main() {

@@ -1,5 +1,5 @@
 #include "types.h"
-#include "orc_proxy.h"
+#include "orc_wrap.h"
 #include "orc/Reader.hh"
 
 

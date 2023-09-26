@@ -4,4 +4,4 @@
 protoc  --proto_path=./orcwrap/proto  --go_out=./utils  ./orcwrap/proto/*.proto
 
 # build
-GOARCH=arm64  CGO_ENABLED=1  go build *.go
+GOARCH=arm64  CGO_ENABLED=1  go build  -o test

@@ -5,34 +5,30 @@ package main
 
 #cgo LDFLAGS: -L./orcwrap/orc_lib -L./orcwrap/libs -L./orcwrap/orc-1.8.5/build/c++/libs/thirdparty  -lorcwrap -lorc -lhdfspp_static  -lrpc -lcommon  -lsasldb -lcrypto -lsnappy -lzstd -lz -llz4 -lprotobuf -lprotoc -lstdc++
 
-#include <stdlib.h>
 #include "orc_wrap.h"
+#include <stdlib.h>
+
 */
 import "C"
 
 import (
 	"fmt"
-
-	"github.com/joccau/utiles/cal"
-	"github.com/joccau/utiles/utils"
+	orc_read "gocpp/orc_pkg"
 )
 
-func case1() {
-	fmt.Println("hello world")
+func test_read() {
+	filepath := "./orcwrap/orc-1.8.5/examples/TestOrcFile.test1.orc"
 
-	num := cal.Add(1, 2)
-	utils.Print(num)
-}
+	r := orc_read.CreateReader(filepath)
+	defer r.Close()
 
-func case2() {
-	r := C.readFile(C.CString("./orcwrap/orc-1.8.5/examples/TestOrcFile.test1.orc"))
-	rowCnt := C.getNumberOfRows(r)
-	stripeCnt := C.getNumberOfStripes(r)
-	C.deleteReader(r)
+	cnt := r.GetNumberOfRows()
+	fmt.Println("the number of rows is ", cnt)
 
-	fmt.Println("the number of rows is ", rowCnt, "the stripe numbers is ", stripeCnt)
+	cnt = r.GetNumberOfStripes()
+	fmt.Println("the number of stripe is ", cnt)
 }
 
 func main() {
-	case2()
+	test_read()
 }

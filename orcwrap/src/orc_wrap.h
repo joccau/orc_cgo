@@ -16,12 +16,16 @@ typedef void reader;
 
 
 // definition of interface.
-void read_file_test(const char* path);
-reader* read_file(const char* path);
-row_reader* create_row_reader(reader* ptr);
+reader* readFile(const char* path);
+void deleteReader(reader* ptr);
 
-uint64_t get_number_of_rows(reader *reader_ptr);
-uint64_t get_number_of_stripes(reader *reader_ptr);
+
+uint64_t getNumberOfRows(reader *ptr);
+uint64_t getNumberOfStripes(reader *ptr);
+uint64_t getFileLength(reader *ptr);
+
+row_reader* createRowReader(reader* ptr);
+void deleteRowReader(row_reader* ptr);
 
 
 #ifdef __cplusplus

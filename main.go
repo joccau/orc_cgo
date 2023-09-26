@@ -24,10 +24,15 @@ func case1() {
 	utils.Print(num)
 }
 
-func read() {
-	C.read_file_test(C.CString("./orcwrap/orc-1.8.5/examples/TestOrcFile.test1.orc"))
+func case2() {
+	r := C.readFile(C.CString("./orcwrap/orc-1.8.5/examples/TestOrcFile.test1.orc"))
+	rowCnt := C.getNumberOfRows(r)
+	stripeCnt := C.getNumberOfStripes(r)
+	C.deleteReader(r)
+
+	fmt.Println("the number of rows is ", rowCnt, "the stripe numbers is ", stripeCnt)
 }
 
 func main() {
-	read()
+	case2()
 }

@@ -2,11 +2,28 @@
 #include "orc/OrcFile.hh"
 
 #include <string.h>
+#include <stdio.h>
 
 using namespace std;
 
-void read_file_test(const char* path){
-    printf("path=%s", path);
+void read_file_test(const char* filepath){
+    printf("path=%s", filepath);
+
+        // 打开文件
+    FILE *file = fopen(filepath, "rb");
+
+    if (file == NULL) {
+        printf("无法打开文件：%s\n", filepath);
+        return;
+    }
+
+    // 定位到文件末尾
+    fseek(file, 0, SEEK_END);
+
+    // 获取文件长度
+    long length = ftell(file);
+    printf("len = %ld\n", length);
+
 }
 
 reader* read_file(const char* path){

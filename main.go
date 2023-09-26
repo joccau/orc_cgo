@@ -25,7 +25,7 @@ func case1() {
 }
 
 func read() {
-	C.read_file_test(C.CString("./orc-1.8.5/examples/TestOrcFile.test1.orc"))
+	C.read_file_test(C.CString("./orcproxy/orc-1.8.5/examples/TestOrcFile.test1.orc"))
 }
 
 func main() {

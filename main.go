@@ -14,6 +14,7 @@ import "C"
 import (
 	"fmt"
 	orc_read "gocpp/orc_pkg"
+	"reflect"
 )
 
 func test_read() {
@@ -29,6 +30,22 @@ func test_read() {
 	fmt.Println("the number of stripe is ", cnt)
 }
 
+func case1() {
+	values := make([]interface{}, 0)
+	values = append(values, 1)
+	values = append(values, "abc")
+	values = append(values, 2.5)
+
+	for _, value := range values {
+		t := reflect.TypeOf(value)
+		v := reflect.ValueOf(value)
+		fmt.Println(t.Name(), " ", v.Kind().String(), " ", v)
+
+	}
+
+}
+
 func main() {
 	test_read()
+	case1()
 }

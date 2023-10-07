@@ -14,7 +14,7 @@ class ColumnParser {
     
     virtual ~ColumnParser();
 
-    virtual void parse(uint64_t rowID) = 0;
+    virtual void parseRow(uint64_t rowID) = 0;
 
     virtual void reset(const orc::ColumnVectorBatch& batch);
 };

@@ -5,34 +5,43 @@ package orc_proto;
 
 option go_package = "./orc_proto";
 
+message Type {
+    enum Kind {
+      BOOLEAN = 0;
+      BYTE = 1;
+      SHORT = 2;
+      INT = 3;
+      LONG = 4;
+      FLOAT = 5;
+      DOUBLE = 6;
+      STRING = 7;
+      BINARY = 8;
+      TIMESTAMP = 9;
+      LIST = 10;
+      MAP = 11;
+      STRUCT = 12;
+      UNION = 13;
+      DECIMAL = 14;
+      DATE = 15;
+      VARCHAR = 16;
+      CHAR = 17;
+      TIMESTAMP_INSTANT = 18;
+    }
+    optional Kind kind = 1;
+    repeated uint32 subtypes = 2 [packed=true];
+    repeated string fieldNames = 3;
+    optional uint32 maximumLength = 4;
+    optional uint32 precision = 5;
+    optional uint32 scale = 6;
+  }
+
 // Field represents a field in a row;
 message Field {
-    enum Kind {
-        BOOLEAN = 0;
-        BYTE = 1;
-        SHORT = 2;
-        INT = 3;
-        LONG = 4;
-        FLOAT = 5;
-        DOUBLE = 6;
-        STRING = 7;
-        BINARY = 8;
-        TIMESTAMP = 9;
-        LIST = 10;
-        MAP = 11;
-        STRUCT = 12;
-        UNION = 13;
-        DECIMAL = 14;
-        DATE = 15;
-        VARCHAR = 16;
-        CHAR = 17;
-        TIMESTAMP_INSTANT = 18;
-      }
-
     // kind specifies the type of field;
-    optional Kind kind = 1;
-    optional uint32 length = 2;
-    optional bytes  value = 3;
+    optional Type type = 1;
+    optional int64 i = 2;
+    optional bytes  value = 4;
+    optional uint32 length = 3;
 }
 
 message Row {

@@ -4,7 +4,7 @@
 protoc  --proto_path=proto  --cpp_out=src   orc_wrap.proto
 
 #build wraper
-export CPATH=orc-1.8.5/c++/include:orc-1.8.5/build/c++/include:/usr/local/protobuf/include
+export CPATH=orc-1.8.5/c++/include:orc-1.8.5/build/c++/include:/usr/local/protobuf/include:./src
 
 g++  -std=c++14 -c ./src/*.c ./src/*.cc
 ar -r liborcwrap.a  *.o

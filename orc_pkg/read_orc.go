@@ -1,7 +1,7 @@
 package orc_read
 
 /*
-#cgo CFLAGS: -Wall  -I../orcwrap/src/
+#cgo CFLAGS: -Wall  -I../orc_wrap/src/
 
 #include "orc_wrap.h"
 */

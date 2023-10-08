@@ -2,6 +2,7 @@
 #define _ORC_PROXY_H_
 
 
+#include <stdbool.h>
 #include "types.h"
 
 #ifdef __cplusplus
@@ -19,8 +20,6 @@ typedef void Type;
 // definition of interface.
 Reader* readFile(const char* path);
 void deleteReader(Reader* ptr);
-
-
 uint64_t getNumberOfRows(Reader *ptr);
 uint64_t getNumberOfStripes(Reader *ptr);
 uint64_t getFileLength(Reader *ptr);

@@ -9,23 +9,29 @@ extern "C" {
 #endif
 
 // definition of types.
-typedef void row_reader;
-typedef void reader;
-
+typedef void RowReader;
+typedef void Reader;
+typedef void ColumnVectorBatch;
+typedef void Type;
 
 
 
 // definition of interface.
-reader* readFile(const char* path);
-void deleteReader(reader* ptr);
+Reader* readFile(const char* path);
+void deleteReader(Reader* ptr);
 
 
-uint64_t getNumberOfRows(reader *ptr);
-uint64_t getNumberOfStripes(reader *ptr);
-uint64_t getFileLength(reader *ptr);
+uint64_t getNumberOfRows(Reader *ptr);
+uint64_t getNumberOfStripes(Reader *ptr);
+uint64_t getFileLength(Reader *ptr);
 
-row_reader* createRowReader(reader* ptr);
-void deleteRowReader(row_reader* ptr);
+RowReader* createRowReader(Reader* ptr);
+void deleteRowReader(RowReader* ptr);
+Type *getSelectedType(RowReader* ptr);
+ColumnVectorBatch* createRowBatch(RowReader* ptr, uint64_t batch);
+bool next(RowReader* row_reader_ptr, ColumnVectorBatch* column_vector_batch_ptr);
+uint64_t getRowNumber(RowReader* row_reader_ptr);
+void seekToRow(RowReader* row_reader_ptr, uint64_t rowNumber);
 
 
 #ifdef __cplusplus

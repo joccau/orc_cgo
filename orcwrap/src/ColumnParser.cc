@@ -127,7 +127,6 @@ void StructColumnParser::reset(const orc::ColumnVectorBatch& batch) {
     }
 }
 
-
 /////////////////////////////////////////////////////////////////////////////////
 // createColumnParser create a ColumnParser with type.
 ORC_UNIQUE_PTR<ColumnParser> createColumnParser(orc_proto::Row &row, const orc::Type* type) {

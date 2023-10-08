@@ -5,18 +5,17 @@
 #include <stdio.h>
 
 using namespace std;
-using namespace orc;
 
 // 
-reader* readFile(const char* path){
+Reader* readFile(const char* path){
     orc::ReaderOptions readerOpts;
     ORC_UNIQUE_PTR<orc::Reader> r = orc::createReader(orc::readFile(path), readerOpts);
 
     orc::Reader *ptr = r.release();
-    return (reader *)ptr;
+    return (Reader *)ptr;
 }
 
-void deleteReader(reader* ptr){
+void deleteReader(Reader* ptr){
     orc::Reader *r = (orc::Reader *)ptr;
     delete r;
 }

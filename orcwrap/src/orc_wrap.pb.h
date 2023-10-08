@@ -52,56 +52,368 @@ extern FieldDefaultTypeInternal _Field_default_instance_;
 class Row;
 struct RowDefaultTypeInternal;
 extern RowDefaultTypeInternal _Row_default_instance_;
+class Type;
+struct TypeDefaultTypeInternal;
+extern TypeDefaultTypeInternal _Type_default_instance_;
 }  // namespace orc_proto
 PROTOBUF_NAMESPACE_OPEN
 template<> ::orc_proto::Field* Arena::CreateMaybeMessage<::orc_proto::Field>(Arena*);
 template<> ::orc_proto::Row* Arena::CreateMaybeMessage<::orc_proto::Row>(Arena*);
+template<> ::orc_proto::Type* Arena::CreateMaybeMessage<::orc_proto::Type>(Arena*);
 PROTOBUF_NAMESPACE_CLOSE
 namespace orc_proto {
 
-enum Field_Kind : int {
-  Field_Kind_BOOLEAN = 0,
-  Field_Kind_BYTE = 1,
-  Field_Kind_SHORT = 2,
-  Field_Kind_INT = 3,
-  Field_Kind_LONG = 4,
-  Field_Kind_FLOAT = 5,
-  Field_Kind_DOUBLE = 6,
-  Field_Kind_STRING = 7,
-  Field_Kind_BINARY = 8,
-  Field_Kind_TIMESTAMP = 9,
-  Field_Kind_LIST = 10,
-  Field_Kind_MAP = 11,
-  Field_Kind_STRUCT = 12,
-  Field_Kind_UNION = 13,
-  Field_Kind_DECIMAL = 14,
-  Field_Kind_DATE = 15,
-  Field_Kind_VARCHAR = 16,
-  Field_Kind_CHAR = 17,
-  Field_Kind_TIMESTAMP_INSTANT = 18,
-  Field_Kind_Field_Kind_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
-  Field_Kind_Field_Kind_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
+enum Type_Kind : int {
+  Type_Kind_BOOLEAN = 0,
+  Type_Kind_BYTE = 1,
+  Type_Kind_SHORT = 2,
+  Type_Kind_INT = 3,
+  Type_Kind_LONG = 4,
+  Type_Kind_FLOAT = 5,
+  Type_Kind_DOUBLE = 6,
+  Type_Kind_STRING = 7,
+  Type_Kind_BINARY = 8,
+  Type_Kind_TIMESTAMP = 9,
+  Type_Kind_LIST = 10,
+  Type_Kind_MAP = 11,
+  Type_Kind_STRUCT = 12,
+  Type_Kind_UNION = 13,
+  Type_Kind_DECIMAL = 14,
+  Type_Kind_DATE = 15,
+  Type_Kind_VARCHAR = 16,
+  Type_Kind_CHAR = 17,
+  Type_Kind_TIMESTAMP_INSTANT = 18,
+  Type_Kind_Type_Kind_INT_MIN_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::min(),
+  Type_Kind_Type_Kind_INT_MAX_SENTINEL_DO_NOT_USE_ = std::numeric_limits<int32_t>::max()
 };
-bool Field_Kind_IsValid(int value);
-constexpr Field_Kind Field_Kind_Kind_MIN = Field_Kind_BOOLEAN;
-constexpr Field_Kind Field_Kind_Kind_MAX = Field_Kind_TIMESTAMP_INSTANT;
-constexpr int Field_Kind_Kind_ARRAYSIZE = Field_Kind_Kind_MAX + 1;
+bool Type_Kind_IsValid(int value);
+constexpr Type_Kind Type_Kind_Kind_MIN = Type_Kind_BOOLEAN;
+constexpr Type_Kind Type_Kind_Kind_MAX = Type_Kind_TIMESTAMP_INSTANT;
+constexpr int Type_Kind_Kind_ARRAYSIZE = Type_Kind_Kind_MAX + 1;
 
-const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Field_Kind_descriptor();
+const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor* Type_Kind_descriptor();
 template<typename T>
-inline const std::string& Field_Kind_Name(T enum_t_value) {
-  static_assert(::std::is_same<T, Field_Kind>::value ||
+inline const std::string& Type_Kind_Name(T enum_t_value) {
+  static_assert(::std::is_same<T, Type_Kind>::value ||
     ::std::is_integral<T>::value,
-    "Incorrect type passed to function Field_Kind_Name.");
+    "Incorrect type passed to function Type_Kind_Name.");
   return ::PROTOBUF_NAMESPACE_ID::internal::NameOfEnum(
-    Field_Kind_descriptor(), enum_t_value);
+    Type_Kind_descriptor(), enum_t_value);
 }
-inline bool Field_Kind_Parse(
-    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, Field_Kind* value) {
-  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<Field_Kind>(
-    Field_Kind_descriptor(), name, value);
+inline bool Type_Kind_Parse(
+    ::PROTOBUF_NAMESPACE_ID::ConstStringParam name, Type_Kind* value) {
+  return ::PROTOBUF_NAMESPACE_ID::internal::ParseNamedEnum<Type_Kind>(
+    Type_Kind_descriptor(), name, value);
 }
 // ===================================================================
+
+class Type final :
+    public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:orc_proto.Type) */ {
+ public:
+  inline Type() : Type(nullptr) {}
+  ~Type() override;
+  explicit PROTOBUF_CONSTEXPR Type(::PROTOBUF_NAMESPACE_ID::internal::ConstantInitialized);
+
+  Type(const Type& from);
+  Type(Type&& from) noexcept
+    : Type() {
+    *this = ::std::move(from);
+  }
+
+  inline Type& operator=(const Type& from) {
+    CopyFrom(from);
+    return *this;
+  }
+  inline Type& operator=(Type&& from) noexcept {
+    if (this == &from) return *this;
+    if (GetOwningArena() == from.GetOwningArena()
+  #ifdef PROTOBUF_FORCE_COPY_IN_MOVE
+        && GetOwningArena() != nullptr
+  #endif  // !PROTOBUF_FORCE_COPY_IN_MOVE
+    ) {
+      InternalSwap(&from);
+    } else {
+      CopyFrom(from);
+    }
+    return *this;
+  }
+
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* descriptor() {
+    return GetDescriptor();
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Descriptor* GetDescriptor() {
+    return default_instance().GetMetadata().descriptor;
+  }
+  static const ::PROTOBUF_NAMESPACE_ID::Reflection* GetReflection() {
+    return default_instance().GetMetadata().reflection;
+  }
+  static const Type& default_instance() {
+    return *internal_default_instance();
+  }
+  static inline const Type* internal_default_instance() {
+    return reinterpret_cast<const Type*>(
+               &_Type_default_instance_);
+  }
+  static constexpr int kIndexInFileMessages =
+    0;
+
+  friend void swap(Type& a, Type& b) {
+    a.Swap(&b);
+  }
+  inline void Swap(Type* other) {
+    if (other == this) return;
+  #ifdef PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() != nullptr &&
+        GetOwningArena() == other->GetOwningArena()) {
+   #else  // PROTOBUF_FORCE_COPY_IN_SWAP
+    if (GetOwningArena() == other->GetOwningArena()) {
+  #endif  // !PROTOBUF_FORCE_COPY_IN_SWAP
+      InternalSwap(other);
+    } else {
+      ::PROTOBUF_NAMESPACE_ID::internal::GenericSwap(this, other);
+    }
+  }
+  void UnsafeArenaSwap(Type* other) {
+    if (other == this) return;
+    GOOGLE_DCHECK(GetOwningArena() == other->GetOwningArena());
+    InternalSwap(other);
+  }
+
+  // implements Message ----------------------------------------------
+
+  Type* New(::PROTOBUF_NAMESPACE_ID::Arena* arena = nullptr) const final {
+    return CreateMaybeMessage<Type>(arena);
+  }
+  using ::PROTOBUF_NAMESPACE_ID::Message::CopyFrom;
+  void CopyFrom(const Type& from);
+  using ::PROTOBUF_NAMESPACE_ID::Message::MergeFrom;
+  void MergeFrom(const Type& from);
+  private:
+  static void MergeImpl(::PROTOBUF_NAMESPACE_ID::Message* to, const ::PROTOBUF_NAMESPACE_ID::Message& from);
+  public:
+  PROTOBUF_ATTRIBUTE_REINITIALIZES void Clear() final;
+  bool IsInitialized() const final;
+
+  size_t ByteSizeLong() const final;
+  const char* _InternalParse(const char* ptr, ::PROTOBUF_NAMESPACE_ID::internal::ParseContext* ctx) final;
+  uint8_t* _InternalSerialize(
+      uint8_t* target, ::PROTOBUF_NAMESPACE_ID::io::EpsCopyOutputStream* stream) const final;
+  int GetCachedSize() const final { return _cached_size_.Get(); }
+
+  private:
+  void SharedCtor();
+  void SharedDtor();
+  void SetCachedSize(int size) const final;
+  void InternalSwap(Type* other);
+
+  private:
+  friend class ::PROTOBUF_NAMESPACE_ID::internal::AnyMetadata;
+  static ::PROTOBUF_NAMESPACE_ID::StringPiece FullMessageName() {
+    return "orc_proto.Type";
+  }
+  protected:
+  explicit Type(::PROTOBUF_NAMESPACE_ID::Arena* arena,
+                       bool is_message_owned = false);
+  public:
+
+  static const ClassData _class_data_;
+  const ::PROTOBUF_NAMESPACE_ID::Message::ClassData*GetClassData() const final;
+
+  ::PROTOBUF_NAMESPACE_ID::Metadata GetMetadata() const final;
+
+  // nested types ----------------------------------------------------
+
+  typedef Type_Kind Kind;
+  static constexpr Kind BOOLEAN =
+    Type_Kind_BOOLEAN;
+  static constexpr Kind BYTE =
+    Type_Kind_BYTE;
+  static constexpr Kind SHORT =
+    Type_Kind_SHORT;
+  static constexpr Kind INT =
+    Type_Kind_INT;
+  static constexpr Kind LONG =
+    Type_Kind_LONG;
+  static constexpr Kind FLOAT =
+    Type_Kind_FLOAT;
+  static constexpr Kind DOUBLE =
+    Type_Kind_DOUBLE;
+  static constexpr Kind STRING =
+    Type_Kind_STRING;
+  static constexpr Kind BINARY =
+    Type_Kind_BINARY;
+  static constexpr Kind TIMESTAMP =
+    Type_Kind_TIMESTAMP;
+  static constexpr Kind LIST =
+    Type_Kind_LIST;
+  static constexpr Kind MAP =
+    Type_Kind_MAP;
+  static constexpr Kind STRUCT =
+    Type_Kind_STRUCT;
+  static constexpr Kind UNION =
+    Type_Kind_UNION;
+  static constexpr Kind DECIMAL =
+    Type_Kind_DECIMAL;
+  static constexpr Kind DATE =
+    Type_Kind_DATE;
+  static constexpr Kind VARCHAR =
+    Type_Kind_VARCHAR;
+  static constexpr Kind CHAR =
+    Type_Kind_CHAR;
+  static constexpr Kind TIMESTAMP_INSTANT =
+    Type_Kind_TIMESTAMP_INSTANT;
+  static inline bool Kind_IsValid(int value) {
+    return Type_Kind_IsValid(value);
+  }
+  static constexpr Kind Kind_MIN =
+    Type_Kind_Kind_MIN;
+  static constexpr Kind Kind_MAX =
+    Type_Kind_Kind_MAX;
+  static constexpr int Kind_ARRAYSIZE =
+    Type_Kind_Kind_ARRAYSIZE;
+  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
+  Kind_descriptor() {
+    return Type_Kind_descriptor();
+  }
+  template<typename T>
+  static inline const std::string& Kind_Name(T enum_t_value) {
+    static_assert(::std::is_same<T, Kind>::value ||
+      ::std::is_integral<T>::value,
+      "Incorrect type passed to function Kind_Name.");
+    return Type_Kind_Name(enum_t_value);
+  }
+  static inline bool Kind_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
+      Kind* value) {
+    return Type_Kind_Parse(name, value);
+  }
+
+  // accessors -------------------------------------------------------
+
+  enum : int {
+    kSubtypesFieldNumber = 2,
+    kFieldNamesFieldNumber = 3,
+    kKindFieldNumber = 1,
+    kMaximumLengthFieldNumber = 4,
+    kPrecisionFieldNumber = 5,
+    kScaleFieldNumber = 6,
+  };
+  // repeated uint32 subtypes = 2 [packed = true];
+  int subtypes_size() const;
+  private:
+  int _internal_subtypes_size() const;
+  public:
+  void clear_subtypes();
+  private:
+  uint32_t _internal_subtypes(int index) const;
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
+      _internal_subtypes() const;
+  void _internal_add_subtypes(uint32_t value);
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
+      _internal_mutable_subtypes();
+  public:
+  uint32_t subtypes(int index) const;
+  void set_subtypes(int index, uint32_t value);
+  void add_subtypes(uint32_t value);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
+      subtypes() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
+      mutable_subtypes();
+
+  // repeated string fieldNames = 3;
+  int fieldnames_size() const;
+  private:
+  int _internal_fieldnames_size() const;
+  public:
+  void clear_fieldnames();
+  const std::string& fieldnames(int index) const;
+  std::string* mutable_fieldnames(int index);
+  void set_fieldnames(int index, const std::string& value);
+  void set_fieldnames(int index, std::string&& value);
+  void set_fieldnames(int index, const char* value);
+  void set_fieldnames(int index, const char* value, size_t size);
+  std::string* add_fieldnames();
+  void add_fieldnames(const std::string& value);
+  void add_fieldnames(std::string&& value);
+  void add_fieldnames(const char* value);
+  void add_fieldnames(const char* value, size_t size);
+  const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>& fieldnames() const;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>* mutable_fieldnames();
+  private:
+  const std::string& _internal_fieldnames(int index) const;
+  std::string* _internal_add_fieldnames();
+  public:
+
+  // optional .orc_proto.Type.Kind kind = 1;
+  bool has_kind() const;
+  private:
+  bool _internal_has_kind() const;
+  public:
+  void clear_kind();
+  ::orc_proto::Type_Kind kind() const;
+  void set_kind(::orc_proto::Type_Kind value);
+  private:
+  ::orc_proto::Type_Kind _internal_kind() const;
+  void _internal_set_kind(::orc_proto::Type_Kind value);
+  public:
+
+  // optional uint32 maximumLength = 4;
+  bool has_maximumlength() const;
+  private:
+  bool _internal_has_maximumlength() const;
+  public:
+  void clear_maximumlength();
+  uint32_t maximumlength() const;
+  void set_maximumlength(uint32_t value);
+  private:
+  uint32_t _internal_maximumlength() const;
+  void _internal_set_maximumlength(uint32_t value);
+  public:
+
+  // optional uint32 precision = 5;
+  bool has_precision() const;
+  private:
+  bool _internal_has_precision() const;
+  public:
+  void clear_precision();
+  uint32_t precision() const;
+  void set_precision(uint32_t value);
+  private:
+  uint32_t _internal_precision() const;
+  void _internal_set_precision(uint32_t value);
+  public:
+
+  // optional uint32 scale = 6;
+  bool has_scale() const;
+  private:
+  bool _internal_has_scale() const;
+  public:
+  void clear_scale();
+  uint32_t scale() const;
+  void set_scale(uint32_t value);
+  private:
+  uint32_t _internal_scale() const;
+  void _internal_set_scale(uint32_t value);
+  public:
+
+  // @@protoc_insertion_point(class_scope:orc_proto.Type)
+ private:
+  class _Internal;
+
+  template <typename T> friend class ::PROTOBUF_NAMESPACE_ID::Arena::InternalHelper;
+  typedef void InternalArenaConstructable_;
+  typedef void DestructorSkippable_;
+  ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
+  mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t > subtypes_;
+  mutable std::atomic<int> _subtypes_cached_byte_size_;
+  ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string> fieldnames_;
+  int kind_;
+  uint32_t maximumlength_;
+  uint32_t precision_;
+  uint32_t scale_;
+  friend struct ::TableStruct_orc_5fwrap_2eproto;
+};
+// -------------------------------------------------------------------
 
 class Field final :
     public ::PROTOBUF_NAMESPACE_ID::Message /* @@protoc_insertion_point(class_definition:orc_proto.Field) */ {
@@ -151,7 +463,7 @@ class Field final :
                &_Field_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    0;
+    1;
 
   friend void swap(Field& a, Field& b) {
     a.Swap(&b);
@@ -219,78 +531,15 @@ class Field final :
 
   // nested types ----------------------------------------------------
 
-  typedef Field_Kind Kind;
-  static constexpr Kind BOOLEAN =
-    Field_Kind_BOOLEAN;
-  static constexpr Kind BYTE =
-    Field_Kind_BYTE;
-  static constexpr Kind SHORT =
-    Field_Kind_SHORT;
-  static constexpr Kind INT =
-    Field_Kind_INT;
-  static constexpr Kind LONG =
-    Field_Kind_LONG;
-  static constexpr Kind FLOAT =
-    Field_Kind_FLOAT;
-  static constexpr Kind DOUBLE =
-    Field_Kind_DOUBLE;
-  static constexpr Kind STRING =
-    Field_Kind_STRING;
-  static constexpr Kind BINARY =
-    Field_Kind_BINARY;
-  static constexpr Kind TIMESTAMP =
-    Field_Kind_TIMESTAMP;
-  static constexpr Kind LIST =
-    Field_Kind_LIST;
-  static constexpr Kind MAP =
-    Field_Kind_MAP;
-  static constexpr Kind STRUCT =
-    Field_Kind_STRUCT;
-  static constexpr Kind UNION =
-    Field_Kind_UNION;
-  static constexpr Kind DECIMAL =
-    Field_Kind_DECIMAL;
-  static constexpr Kind DATE =
-    Field_Kind_DATE;
-  static constexpr Kind VARCHAR =
-    Field_Kind_VARCHAR;
-  static constexpr Kind CHAR =
-    Field_Kind_CHAR;
-  static constexpr Kind TIMESTAMP_INSTANT =
-    Field_Kind_TIMESTAMP_INSTANT;
-  static inline bool Kind_IsValid(int value) {
-    return Field_Kind_IsValid(value);
-  }
-  static constexpr Kind Kind_MIN =
-    Field_Kind_Kind_MIN;
-  static constexpr Kind Kind_MAX =
-    Field_Kind_Kind_MAX;
-  static constexpr int Kind_ARRAYSIZE =
-    Field_Kind_Kind_ARRAYSIZE;
-  static inline const ::PROTOBUF_NAMESPACE_ID::EnumDescriptor*
-  Kind_descriptor() {
-    return Field_Kind_descriptor();
-  }
-  template<typename T>
-  static inline const std::string& Kind_Name(T enum_t_value) {
-    static_assert(::std::is_same<T, Kind>::value ||
-      ::std::is_integral<T>::value,
-      "Incorrect type passed to function Kind_Name.");
-    return Field_Kind_Name(enum_t_value);
-  }
-  static inline bool Kind_Parse(::PROTOBUF_NAMESPACE_ID::ConstStringParam name,
-      Kind* value) {
-    return Field_Kind_Parse(name, value);
-  }
-
   // accessors -------------------------------------------------------
 
   enum : int {
-    kValueFieldNumber = 3,
-    kKindFieldNumber = 1,
-    kLengthFieldNumber = 2,
+    kValueFieldNumber = 4,
+    kTypeFieldNumber = 1,
+    kIFieldNumber = 2,
+    kLengthFieldNumber = 3,
   };
-  // optional bytes value = 3;
+  // optional bytes value = 4;
   bool has_value() const;
   private:
   bool _internal_has_value() const;
@@ -308,20 +557,38 @@ class Field final :
   std::string* _internal_mutable_value();
   public:
 
-  // optional .orc_proto.Field.Kind kind = 1;
-  bool has_kind() const;
+  // optional .orc_proto.Type type = 1;
+  bool has_type() const;
   private:
-  bool _internal_has_kind() const;
+  bool _internal_has_type() const;
   public:
-  void clear_kind();
-  ::orc_proto::Field_Kind kind() const;
-  void set_kind(::orc_proto::Field_Kind value);
+  void clear_type();
+  const ::orc_proto::Type& type() const;
+  PROTOBUF_NODISCARD ::orc_proto::Type* release_type();
+  ::orc_proto::Type* mutable_type();
+  void set_allocated_type(::orc_proto::Type* type);
   private:
-  ::orc_proto::Field_Kind _internal_kind() const;
-  void _internal_set_kind(::orc_proto::Field_Kind value);
+  const ::orc_proto::Type& _internal_type() const;
+  ::orc_proto::Type* _internal_mutable_type();
+  public:
+  void unsafe_arena_set_allocated_type(
+      ::orc_proto::Type* type);
+  ::orc_proto::Type* unsafe_arena_release_type();
+
+  // optional int64 i = 2;
+  bool has_i() const;
+  private:
+  bool _internal_has_i() const;
+  public:
+  void clear_i();
+  int64_t i() const;
+  void set_i(int64_t value);
+  private:
+  int64_t _internal_i() const;
+  void _internal_set_i(int64_t value);
   public:
 
-  // optional uint32 length = 2;
+  // optional uint32 length = 3;
   bool has_length() const;
   private:
   bool _internal_has_length() const;
@@ -344,7 +611,8 @@ class Field final :
   ::PROTOBUF_NAMESPACE_ID::internal::HasBits<1> _has_bits_;
   mutable ::PROTOBUF_NAMESPACE_ID::internal::CachedSize _cached_size_;
   ::PROTOBUF_NAMESPACE_ID::internal::ArenaStringPtr value_;
-  int kind_;
+  ::orc_proto::Type* type_;
+  int64_t i_;
   uint32_t length_;
   friend struct ::TableStruct_orc_5fwrap_2eproto;
 };
@@ -398,7 +666,7 @@ class Row final :
                &_Row_default_instance_);
   }
   static constexpr int kIndexInFileMessages =
-    1;
+    2;
 
   friend void swap(Row& a, Row& b) {
     a.Swap(&b);
@@ -509,65 +777,365 @@ class Row final :
   #pragma GCC diagnostic push
   #pragma GCC diagnostic ignored "-Wstrict-aliasing"
 #endif  // __GNUC__
-// Field
+// Type
 
-// optional .orc_proto.Field.Kind kind = 1;
-inline bool Field::_internal_has_kind() const {
+// optional .orc_proto.Type.Kind kind = 1;
+inline bool Type::_internal_has_kind() const {
+  bool value = (_has_bits_[0] & 0x00000001u) != 0;
+  return value;
+}
+inline bool Type::has_kind() const {
+  return _internal_has_kind();
+}
+inline void Type::clear_kind() {
+  kind_ = 0;
+  _has_bits_[0] &= ~0x00000001u;
+}
+inline ::orc_proto::Type_Kind Type::_internal_kind() const {
+  return static_cast< ::orc_proto::Type_Kind >(kind_);
+}
+inline ::orc_proto::Type_Kind Type::kind() const {
+  // @@protoc_insertion_point(field_get:orc_proto.Type.kind)
+  return _internal_kind();
+}
+inline void Type::_internal_set_kind(::orc_proto::Type_Kind value) {
+  _has_bits_[0] |= 0x00000001u;
+  kind_ = value;
+}
+inline void Type::set_kind(::orc_proto::Type_Kind value) {
+  _internal_set_kind(value);
+  // @@protoc_insertion_point(field_set:orc_proto.Type.kind)
+}
+
+// repeated uint32 subtypes = 2 [packed = true];
+inline int Type::_internal_subtypes_size() const {
+  return subtypes_.size();
+}
+inline int Type::subtypes_size() const {
+  return _internal_subtypes_size();
+}
+inline void Type::clear_subtypes() {
+  subtypes_.Clear();
+}
+inline uint32_t Type::_internal_subtypes(int index) const {
+  return subtypes_.Get(index);
+}
+inline uint32_t Type::subtypes(int index) const {
+  // @@protoc_insertion_point(field_get:orc_proto.Type.subtypes)
+  return _internal_subtypes(index);
+}
+inline void Type::set_subtypes(int index, uint32_t value) {
+  subtypes_.Set(index, value);
+  // @@protoc_insertion_point(field_set:orc_proto.Type.subtypes)
+}
+inline void Type::_internal_add_subtypes(uint32_t value) {
+  subtypes_.Add(value);
+}
+inline void Type::add_subtypes(uint32_t value) {
+  _internal_add_subtypes(value);
+  // @@protoc_insertion_point(field_add:orc_proto.Type.subtypes)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
+Type::_internal_subtypes() const {
+  return subtypes_;
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >&
+Type::subtypes() const {
+  // @@protoc_insertion_point(field_list:orc_proto.Type.subtypes)
+  return _internal_subtypes();
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
+Type::_internal_mutable_subtypes() {
+  return &subtypes_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedField< uint32_t >*
+Type::mutable_subtypes() {
+  // @@protoc_insertion_point(field_mutable_list:orc_proto.Type.subtypes)
+  return _internal_mutable_subtypes();
+}
+
+// repeated string fieldNames = 3;
+inline int Type::_internal_fieldnames_size() const {
+  return fieldnames_.size();
+}
+inline int Type::fieldnames_size() const {
+  return _internal_fieldnames_size();
+}
+inline void Type::clear_fieldnames() {
+  fieldnames_.Clear();
+}
+inline std::string* Type::add_fieldnames() {
+  std::string* _s = _internal_add_fieldnames();
+  // @@protoc_insertion_point(field_add_mutable:orc_proto.Type.fieldNames)
+  return _s;
+}
+inline const std::string& Type::_internal_fieldnames(int index) const {
+  return fieldnames_.Get(index);
+}
+inline const std::string& Type::fieldnames(int index) const {
+  // @@protoc_insertion_point(field_get:orc_proto.Type.fieldNames)
+  return _internal_fieldnames(index);
+}
+inline std::string* Type::mutable_fieldnames(int index) {
+  // @@protoc_insertion_point(field_mutable:orc_proto.Type.fieldNames)
+  return fieldnames_.Mutable(index);
+}
+inline void Type::set_fieldnames(int index, const std::string& value) {
+  fieldnames_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set:orc_proto.Type.fieldNames)
+}
+inline void Type::set_fieldnames(int index, std::string&& value) {
+  fieldnames_.Mutable(index)->assign(std::move(value));
+  // @@protoc_insertion_point(field_set:orc_proto.Type.fieldNames)
+}
+inline void Type::set_fieldnames(int index, const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  fieldnames_.Mutable(index)->assign(value);
+  // @@protoc_insertion_point(field_set_char:orc_proto.Type.fieldNames)
+}
+inline void Type::set_fieldnames(int index, const char* value, size_t size) {
+  fieldnames_.Mutable(index)->assign(
+    reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_set_pointer:orc_proto.Type.fieldNames)
+}
+inline std::string* Type::_internal_add_fieldnames() {
+  return fieldnames_.Add();
+}
+inline void Type::add_fieldnames(const std::string& value) {
+  fieldnames_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add:orc_proto.Type.fieldNames)
+}
+inline void Type::add_fieldnames(std::string&& value) {
+  fieldnames_.Add(std::move(value));
+  // @@protoc_insertion_point(field_add:orc_proto.Type.fieldNames)
+}
+inline void Type::add_fieldnames(const char* value) {
+  GOOGLE_DCHECK(value != nullptr);
+  fieldnames_.Add()->assign(value);
+  // @@protoc_insertion_point(field_add_char:orc_proto.Type.fieldNames)
+}
+inline void Type::add_fieldnames(const char* value, size_t size) {
+  fieldnames_.Add()->assign(reinterpret_cast<const char*>(value), size);
+  // @@protoc_insertion_point(field_add_pointer:orc_proto.Type.fieldNames)
+}
+inline const ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>&
+Type::fieldnames() const {
+  // @@protoc_insertion_point(field_list:orc_proto.Type.fieldNames)
+  return fieldnames_;
+}
+inline ::PROTOBUF_NAMESPACE_ID::RepeatedPtrField<std::string>*
+Type::mutable_fieldnames() {
+  // @@protoc_insertion_point(field_mutable_list:orc_proto.Type.fieldNames)
+  return &fieldnames_;
+}
+
+// optional uint32 maximumLength = 4;
+inline bool Type::_internal_has_maximumlength() const {
   bool value = (_has_bits_[0] & 0x00000002u) != 0;
   return value;
 }
-inline bool Field::has_kind() const {
-  return _internal_has_kind();
+inline bool Type::has_maximumlength() const {
+  return _internal_has_maximumlength();
 }
-inline void Field::clear_kind() {
-  kind_ = 0;
+inline void Type::clear_maximumlength() {
+  maximumlength_ = 0u;
   _has_bits_[0] &= ~0x00000002u;
 }
-inline ::orc_proto::Field_Kind Field::_internal_kind() const {
-  return static_cast< ::orc_proto::Field_Kind >(kind_);
+inline uint32_t Type::_internal_maximumlength() const {
+  return maximumlength_;
 }
-inline ::orc_proto::Field_Kind Field::kind() const {
-  // @@protoc_insertion_point(field_get:orc_proto.Field.kind)
-  return _internal_kind();
+inline uint32_t Type::maximumlength() const {
+  // @@protoc_insertion_point(field_get:orc_proto.Type.maximumLength)
+  return _internal_maximumlength();
 }
-inline void Field::_internal_set_kind(::orc_proto::Field_Kind value) {
+inline void Type::_internal_set_maximumlength(uint32_t value) {
   _has_bits_[0] |= 0x00000002u;
-  kind_ = value;
+  maximumlength_ = value;
 }
-inline void Field::set_kind(::orc_proto::Field_Kind value) {
-  _internal_set_kind(value);
-  // @@protoc_insertion_point(field_set:orc_proto.Field.kind)
+inline void Type::set_maximumlength(uint32_t value) {
+  _internal_set_maximumlength(value);
+  // @@protoc_insertion_point(field_set:orc_proto.Type.maximumLength)
 }
 
-// optional uint32 length = 2;
-inline bool Field::_internal_has_length() const {
+// optional uint32 precision = 5;
+inline bool Type::_internal_has_precision() const {
   bool value = (_has_bits_[0] & 0x00000004u) != 0;
   return value;
 }
-inline bool Field::has_length() const {
-  return _internal_has_length();
+inline bool Type::has_precision() const {
+  return _internal_has_precision();
 }
-inline void Field::clear_length() {
-  length_ = 0u;
+inline void Type::clear_precision() {
+  precision_ = 0u;
   _has_bits_[0] &= ~0x00000004u;
 }
-inline uint32_t Field::_internal_length() const {
-  return length_;
+inline uint32_t Type::_internal_precision() const {
+  return precision_;
 }
-inline uint32_t Field::length() const {
-  // @@protoc_insertion_point(field_get:orc_proto.Field.length)
-  return _internal_length();
+inline uint32_t Type::precision() const {
+  // @@protoc_insertion_point(field_get:orc_proto.Type.precision)
+  return _internal_precision();
 }
-inline void Field::_internal_set_length(uint32_t value) {
+inline void Type::_internal_set_precision(uint32_t value) {
   _has_bits_[0] |= 0x00000004u;
-  length_ = value;
+  precision_ = value;
 }
-inline void Field::set_length(uint32_t value) {
-  _internal_set_length(value);
-  // @@protoc_insertion_point(field_set:orc_proto.Field.length)
+inline void Type::set_precision(uint32_t value) {
+  _internal_set_precision(value);
+  // @@protoc_insertion_point(field_set:orc_proto.Type.precision)
 }
 
-// optional bytes value = 3;
+// optional uint32 scale = 6;
+inline bool Type::_internal_has_scale() const {
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool Type::has_scale() const {
+  return _internal_has_scale();
+}
+inline void Type::clear_scale() {
+  scale_ = 0u;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline uint32_t Type::_internal_scale() const {
+  return scale_;
+}
+inline uint32_t Type::scale() const {
+  // @@protoc_insertion_point(field_get:orc_proto.Type.scale)
+  return _internal_scale();
+}
+inline void Type::_internal_set_scale(uint32_t value) {
+  _has_bits_[0] |= 0x00000008u;
+  scale_ = value;
+}
+inline void Type::set_scale(uint32_t value) {
+  _internal_set_scale(value);
+  // @@protoc_insertion_point(field_set:orc_proto.Type.scale)
+}
+
+// -------------------------------------------------------------------
+
+// Field
+
+// optional .orc_proto.Type type = 1;
+inline bool Field::_internal_has_type() const {
+  bool value = (_has_bits_[0] & 0x00000002u) != 0;
+  PROTOBUF_ASSUME(!value || type_ != nullptr);
+  return value;
+}
+inline bool Field::has_type() const {
+  return _internal_has_type();
+}
+inline void Field::clear_type() {
+  if (type_ != nullptr) type_->Clear();
+  _has_bits_[0] &= ~0x00000002u;
+}
+inline const ::orc_proto::Type& Field::_internal_type() const {
+  const ::orc_proto::Type* p = type_;
+  return p != nullptr ? *p : reinterpret_cast<const ::orc_proto::Type&>(
+      ::orc_proto::_Type_default_instance_);
+}
+inline const ::orc_proto::Type& Field::type() const {
+  // @@protoc_insertion_point(field_get:orc_proto.Field.type)
+  return _internal_type();
+}
+inline void Field::unsafe_arena_set_allocated_type(
+    ::orc_proto::Type* type) {
+  if (GetArenaForAllocation() == nullptr) {
+    delete reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(type_);
+  }
+  type_ = type;
+  if (type) {
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  // @@protoc_insertion_point(field_unsafe_arena_set_allocated:orc_proto.Field.type)
+}
+inline ::orc_proto::Type* Field::release_type() {
+  _has_bits_[0] &= ~0x00000002u;
+  ::orc_proto::Type* temp = type_;
+  type_ = nullptr;
+#ifdef PROTOBUF_FORCE_COPY_IN_RELEASE
+  auto* old =  reinterpret_cast<::PROTOBUF_NAMESPACE_ID::MessageLite*>(temp);
+  temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  if (GetArenaForAllocation() == nullptr) { delete old; }
+#else  // PROTOBUF_FORCE_COPY_IN_RELEASE
+  if (GetArenaForAllocation() != nullptr) {
+    temp = ::PROTOBUF_NAMESPACE_ID::internal::DuplicateIfNonNull(temp);
+  }
+#endif  // !PROTOBUF_FORCE_COPY_IN_RELEASE
+  return temp;
+}
+inline ::orc_proto::Type* Field::unsafe_arena_release_type() {
+  // @@protoc_insertion_point(field_release:orc_proto.Field.type)
+  _has_bits_[0] &= ~0x00000002u;
+  ::orc_proto::Type* temp = type_;
+  type_ = nullptr;
+  return temp;
+}
+inline ::orc_proto::Type* Field::_internal_mutable_type() {
+  _has_bits_[0] |= 0x00000002u;
+  if (type_ == nullptr) {
+    auto* p = CreateMaybeMessage<::orc_proto::Type>(GetArenaForAllocation());
+    type_ = p;
+  }
+  return type_;
+}
+inline ::orc_proto::Type* Field::mutable_type() {
+  ::orc_proto::Type* _msg = _internal_mutable_type();
+  // @@protoc_insertion_point(field_mutable:orc_proto.Field.type)
+  return _msg;
+}
+inline void Field::set_allocated_type(::orc_proto::Type* type) {
+  ::PROTOBUF_NAMESPACE_ID::Arena* message_arena = GetArenaForAllocation();
+  if (message_arena == nullptr) {
+    delete type_;
+  }
+  if (type) {
+    ::PROTOBUF_NAMESPACE_ID::Arena* submessage_arena =
+        ::PROTOBUF_NAMESPACE_ID::Arena::InternalGetOwningArena(type);
+    if (message_arena != submessage_arena) {
+      type = ::PROTOBUF_NAMESPACE_ID::internal::GetOwnedMessage(
+          message_arena, type, submessage_arena);
+    }
+    _has_bits_[0] |= 0x00000002u;
+  } else {
+    _has_bits_[0] &= ~0x00000002u;
+  }
+  type_ = type;
+  // @@protoc_insertion_point(field_set_allocated:orc_proto.Field.type)
+}
+
+// optional int64 i = 2;
+inline bool Field::_internal_has_i() const {
+  bool value = (_has_bits_[0] & 0x00000004u) != 0;
+  return value;
+}
+inline bool Field::has_i() const {
+  return _internal_has_i();
+}
+inline void Field::clear_i() {
+  i_ = int64_t{0};
+  _has_bits_[0] &= ~0x00000004u;
+}
+inline int64_t Field::_internal_i() const {
+  return i_;
+}
+inline int64_t Field::i() const {
+  // @@protoc_insertion_point(field_get:orc_proto.Field.i)
+  return _internal_i();
+}
+inline void Field::_internal_set_i(int64_t value) {
+  _has_bits_[0] |= 0x00000004u;
+  i_ = value;
+}
+inline void Field::set_i(int64_t value) {
+  _internal_set_i(value);
+  // @@protoc_insertion_point(field_set:orc_proto.Field.i)
+}
+
+// optional bytes value = 4;
 inline bool Field::_internal_has_value() const {
   bool value = (_has_bits_[0] & 0x00000001u) != 0;
   return value;
@@ -635,6 +1203,34 @@ inline void Field::set_allocated_value(std::string* value) {
   // @@protoc_insertion_point(field_set_allocated:orc_proto.Field.value)
 }
 
+// optional uint32 length = 3;
+inline bool Field::_internal_has_length() const {
+  bool value = (_has_bits_[0] & 0x00000008u) != 0;
+  return value;
+}
+inline bool Field::has_length() const {
+  return _internal_has_length();
+}
+inline void Field::clear_length() {
+  length_ = 0u;
+  _has_bits_[0] &= ~0x00000008u;
+}
+inline uint32_t Field::_internal_length() const {
+  return length_;
+}
+inline uint32_t Field::length() const {
+  // @@protoc_insertion_point(field_get:orc_proto.Field.length)
+  return _internal_length();
+}
+inline void Field::_internal_set_length(uint32_t value) {
+  _has_bits_[0] |= 0x00000008u;
+  length_ = value;
+}
+inline void Field::set_length(uint32_t value) {
+  _internal_set_length(value);
+  // @@protoc_insertion_point(field_set:orc_proto.Field.length)
+}
+
 // -------------------------------------------------------------------
 
 // Row
@@ -684,6 +1280,8 @@ Row::field() const {
 #endif  // __GNUC__
 // -------------------------------------------------------------------
 
+// -------------------------------------------------------------------
+
 
 // @@protoc_insertion_point(namespace_scope)
 
@@ -691,10 +1289,10 @@ Row::field() const {
 
 PROTOBUF_NAMESPACE_OPEN
 
-template <> struct is_proto_enum< ::orc_proto::Field_Kind> : ::std::true_type {};
+template <> struct is_proto_enum< ::orc_proto::Type_Kind> : ::std::true_type {};
 template <>
-inline const EnumDescriptor* GetEnumDescriptor< ::orc_proto::Field_Kind>() {
-  return ::orc_proto::Field_Kind_descriptor();
+inline const EnumDescriptor* GetEnumDescriptor< ::orc_proto::Type_Kind>() {
+  return ::orc_proto::Type_Kind_descriptor();
 }
 
 PROTOBUF_NAMESPACE_CLOSE

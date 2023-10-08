@@ -1,6 +1,7 @@
 
 #include "ColumnParser.h"
 
+namespace orc {
 
 // ColumnParser: constructor, destructor and member function
 
@@ -107,7 +108,7 @@ StructColumnParser::StructColumnParser(orc_proto::Row &row, const orc::Type &typ
     ): ColumnParser(row) {
     for(int i = 0; i < type.getSubtypeCount(); ++i) {
         fieldNames.push_back(type.getFieldName(i));
-        fieldParser.push_back(createColumnParser(row, type.getSubtype(i)));
+        fieldParser.push_back(_createColumnParser(row, type.getSubtype(i)));
     } 
 }
 
@@ -128,8 +129,8 @@ void StructColumnParser::reset(const orc::ColumnVectorBatch& batch) {
 }
 
 /////////////////////////////////////////////////////////////////////////////////
-// createColumnParser create a ColumnParser with type.
-ORC_UNIQUE_PTR<ColumnParser> createColumnParser(orc_proto::Row &row, const orc::Type* type) {
+// _createColumnParser create a ColumnParser with type.
+ORC_UNIQUE_PTR<ColumnParser> _createColumnParser(orc_proto::Row &row, const orc::Type* type) {
     ColumnParser *result = nullptr;
     
     if (!type) {
@@ -200,7 +201,7 @@ ORC_UNIQUE_PTR<ColumnParser> createColumnParser(orc_proto::Row &row, const orc::
     return std::unique_ptr<ColumnParser>(result);;
 }
 
-
+}// namespace
 
 
 

@@ -5,6 +5,8 @@
 #include "orc/Vector.hh"
 #include "orc/Type.hh"
 
+namespace orc {
+
 class ColumnParser {
   protected:
     orc_proto::Row row;
@@ -19,7 +21,8 @@ class ColumnParser {
     virtual void reset(const orc::ColumnVectorBatch& batch);
 };
 
-ORC_UNIQUE_PTR<ColumnParser> createColumnParser(orc_proto::Row &row, const orc::Type* type);
+ORC_UNIQUE_PTR<ColumnParser> _createColumnParser(orc_proto::Row &row, const orc::Type* type);
 
+}// namespace
 
 #endif // _COLUMN_PARSER_H_

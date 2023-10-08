@@ -7,7 +7,10 @@ package orc_read
 */
 import "C"
 
-import "unsafe"
+import (
+	"orc_cgo/utils/orc_proto"
+	"unsafe"
+)
 
 /* this package is:
 1. Provide interface in Golang.
@@ -86,4 +89,12 @@ type Type struct {
 
 type ColumnVectorBatch struct {
 	ptr unsafe.Pointer
+}
+
+type ColumnParser struct {
+	ptr unsafe.Pointer
+}
+
+func CreateColumnParser(r orc_proto.Row, t Type) {
+
 }

@@ -14,7 +14,7 @@ typedef void RowReader;
 typedef void Reader;
 typedef void ColumnVectorBatch;
 typedef void Type;
-
+typedef void ColumnParser;
 
 
 // definition of interface.

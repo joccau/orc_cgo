@@ -13,12 +13,12 @@ import "C"
 
 import (
 	"fmt"
-	orc_read "gocpp/orc_pkg"
+	orc_read "orc_cgo/orc_pkg"
 	"reflect"
 )
 
 func test_read() {
-	filepath := "./orcwrap/orc-1.8.5/examples/TestOrcFile.test1.orc"
+	filepath := "./orc_wrap/orc-1.8.5/examples/TestOrcFile.test1.orc"
 
 	r := orc_read.CreateReader(filepath)
 	defer r.Close()
@@ -28,6 +28,17 @@ func test_read() {
 
 	cnt = r.GetNumberOfStripes()
 	fmt.Println("the number of stripe is ", cnt)
+}
+
+func test_read_content() {
+	filepath := "./orc_wrap/orc-1.8.5/examples/TestOrcFile.test1.orc"
+	reader := orc_read.CreateReader(filepath)
+	defer reader.Close()
+	rowReader := reader.CreateRowReader()
+	defer rowReader.Close()
+
+	rowReader.CreateRowBatch(10)
+
 }
 
 func case1() {
@@ -47,5 +58,6 @@ func case1() {
 
 func main() {
 	test_read()
-	case1()
+	test_read_content()
+	//case1()
 }

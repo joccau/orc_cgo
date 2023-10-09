@@ -8,7 +8,6 @@ package orc_read
 import "C"
 
 import (
-	"orc_cgo/utils/orc_proto"
 	"unsafe"
 )
 
@@ -95,6 +94,8 @@ type ColumnParser struct {
 	ptr unsafe.Pointer
 }
 
-func CreateColumnParser(r orc_proto.Row, t Type) {
-
+func CreateColumnParser(t Type) ColumnParser {
+	// cp := C.createColumnParser(t.ptr)
+	// return ColumnParser{cp}
+	return ColumnParser{}
 }

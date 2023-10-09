@@ -3,7 +3,7 @@ package main
 /*
 #cgo CFLAGS: -Wall  -I./orc_wrap/ -I./orc_wrap/src/
 
-#cgo LDFLAGS: -L./orc_wrap/orc_lib -L./orc_wrap/libs -L./orc_wrap/orc-1.8.5/build/c++/libs/thirdparty  -lorcwrap -lorc -lhdfspp_static  -lrpc -lcommon  -lsasldb -lcrypto -lsnappy -lzstd -lz -llz4 -lprotobuf -lprotoc -lstdc++
+#cgo LDFLAGS: -L./orc_wrap/orc_lib -L./orc_wrap/libs -L./orc_wrap/orc-1.8.5/build/c++/libs/thirdparty -L./orc_wrap/orc-1.8.5/build/c++/libs/thirdparty/protobuf_ep-install/lib -lorcwrap -lorc -lhdfspp_static  -lrpc -lcommon  -lsasldb -lcrypto -lsnappy -lzstd -lz -llz4 -lprotobuf -lprotoc -lstdc++
 
 #include "orc_wrap.h"
 #include <stdlib.h>

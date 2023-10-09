@@ -5,7 +5,8 @@ namespace orc {
 
 // ColumnParser: constructor, destructor and member function
 
-ColumnParser::ColumnParser(orc_proto::Row& _row) : row(_row) {
+ColumnParser::ColumnParser() {
+    // row.Clear();
 }
 
 ColumnParser::~ColumnParser () {
@@ -16,6 +17,11 @@ void ColumnParser::reset(const orc::ColumnVectorBatch& batch) {
 
 }
 
+const char* ColumnParser::getEncodedRow() {
+    // row.SerializeToString(&encoded_row);
+    return encoded_row.data();
+}
+
 // class BooleanColumnParser
 
 class BooleanColumnParser: public ColumnParser {
@@ -23,13 +29,13 @@ private:
     const int64_t *data;
 
 public:
-    BooleanColumnParser(orc_proto::Row&);
+    BooleanColumnParser();
     ~BooleanColumnParser() override;
     void parseRow(uint64_t rowID) override;
     void reset(const orc::ColumnVectorBatch& batch) override;
 };
 
-BooleanColumnParser::BooleanColumnParser(orc_proto::Row& _row): ColumnParser(_row), data(nullptr) {
+BooleanColumnParser::BooleanColumnParser(): data(nullptr) {
     // Pass
 }
 
@@ -60,13 +66,13 @@ class LongColumnParser: public ColumnParser {
 private:
     const int64_t* data;
 public:
-    LongColumnParser(orc_proto::Row&);
+    LongColumnParser();
     ~LongColumnParser() override;
     void parseRow(uint64_t rowID) override;
     void reset(const orc::ColumnVectorBatch& batch) override;
 };
 
-LongColumnParser::LongColumnParser(orc_proto::Row &row): ColumnParser(row), data(nullptr) {
+LongColumnParser::LongColumnParser(): data(nullptr) {
     // Pass
 }
 
@@ -99,16 +105,16 @@ private:
     std::vector<std::string> fieldNames;
 
 public:
-    StructColumnParser(orc_proto::Row &, const orc::Type &);
+    StructColumnParser(const orc::Type &);
     void parseRow(uint64_t rowID) override;
     void reset(const orc::ColumnVectorBatch& batch) override;
 };
 
-StructColumnParser::StructColumnParser(orc_proto::Row &row, const orc::Type &type
-    ): ColumnParser(row) {
+StructColumnParser::StructColumnParser(const orc::Type &type
+    ): ColumnParser() {
     for(int i = 0; i < type.getSubtypeCount(); ++i) {
         fieldNames.push_back(type.getFieldName(i));
-        fieldParser.push_back(_createColumnParser(row, type.getSubtype(i)));
+        fieldParser.push_back(_createColumnParser(type.getSubtype(i)));
     } 
 }
 
@@ -130,19 +136,19 @@ void StructColumnParser::reset(const orc::ColumnVectorBatch& batch) {
 
 /////////////////////////////////////////////////////////////////////////////////
 // _createColumnParser create a ColumnParser with type.
-ORC_UNIQUE_PTR<ColumnParser> _createColumnParser(orc_proto::Row &row, const orc::Type* type) {
+ORC_UNIQUE_PTR<ColumnParser> _createColumnParser(const orc::Type* type) {
     ColumnParser *result = nullptr;
     
     if (!type) {
         switch(static_cast<int64_t>(type->getKind())) {
         case orc::BOOLEAN:
-            result = new BooleanColumnParser(row);
+            result = new BooleanColumnParser();
             break;
         case orc::BYTE:
         case orc::SHORT:
         case orc::INT:
         case orc::LONG:
-            result = new LongColumnParser(row);
+            result = new LongColumnParser();
             break;
         /*
         case FLOAT:

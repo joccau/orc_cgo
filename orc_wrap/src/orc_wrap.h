@@ -5,6 +5,7 @@
 #include <stdbool.h>
 #include "types.h"
 
+
 #ifdef __cplusplus
 extern "C" {
 #endif
@@ -32,6 +33,8 @@ bool next(RowReader* row_reader_ptr, ColumnVectorBatch* column_vector_batch_ptr)
 uint64_t getRowNumber(RowReader* row_reader_ptr);
 void seekToRow(RowReader* row_reader_ptr, uint64_t rowNumber);
 
+ColumnParser* createColumnParser(Type* t);
+const char* getEncodedRow(ColumnParser *ptr);
 
 #ifdef __cplusplus
 }

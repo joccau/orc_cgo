@@ -27,21 +27,21 @@ message Type {
       CHAR = 17;
       TIMESTAMP_INSTANT = 18;
     }
-    optional Kind kind = 1;
+    Kind kind = 1;
     repeated uint32 subtypes = 2 [packed=true];
     repeated string fieldNames = 3;
-    optional uint32 maximumLength = 4;
-    optional uint32 precision = 5;
-    optional uint32 scale = 6;
+    uint32 maximumLength = 4;
+    uint32 precision = 5;
+    uint32 scale = 6;
   }
 
 // Field represents a field in a row;
 message Field {
     // kind specifies the type of field;
-    optional Type type = 1;
-    optional int64 i = 2;
-    optional bytes  value = 4;
-    optional uint32 length = 3;
+    Type type = 1;
+    int64 i = 2;
+    bytes  value = 4;
+    uint32 length = 3;
 }
 
 message Row {

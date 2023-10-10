@@ -538,23 +538,23 @@ class Row : public ::google::protobuf::Message /* @@protoc_insertion_point(class
 
   // accessors -------------------------------------------------------
 
-  // repeated .orc_proto.Field field = 1;
-  int field_size() const;
-  void clear_field();
-  static const int kFieldFieldNumber = 1;
-  const ::orc_proto::Field& field(int index) const;
-  ::orc_proto::Field* mutable_field(int index);
-  ::orc_proto::Field* add_field();
+  // repeated .orc_proto.Field fields = 1;
+  int fields_size() const;
+  void clear_fields();
+  static const int kFieldsFieldNumber = 1;
+  const ::orc_proto::Field& fields(int index) const;
+  ::orc_proto::Field* mutable_fields(int index);
+  ::orc_proto::Field* add_fields();
   ::google::protobuf::RepeatedPtrField< ::orc_proto::Field >*
-      mutable_field();
+      mutable_fields();
   const ::google::protobuf::RepeatedPtrField< ::orc_proto::Field >&
-      field() const;
+      fields() const;
 
   // @@protoc_insertion_point(class_scope:orc_proto.Row)
  private:
 
   ::google::protobuf::internal::InternalMetadataWithArena _internal_metadata_;
-  ::google::protobuf::RepeatedPtrField< ::orc_proto::Field > field_;
+  ::google::protobuf::RepeatedPtrField< ::orc_proto::Field > fields_;
   mutable int _cached_size_;
   friend struct ::protobuf_orc_5fwrap_2eproto::TableStruct;
   friend void ::protobuf_orc_5fwrap_2eproto::InitDefaultsRowImpl();
@@ -864,34 +864,34 @@ inline void Field::set_length(::google::protobuf::uint32 value) {
 
 // Row
 
-// repeated .orc_proto.Field field = 1;
-inline int Row::field_size() const {
-  return field_.size();
+// repeated .orc_proto.Field fields = 1;
+inline int Row::fields_size() const {
+  return fields_.size();
 }
-inline void Row::clear_field() {
-  field_.Clear();
+inline void Row::clear_fields() {
+  fields_.Clear();
 }
-inline const ::orc_proto::Field& Row::field(int index) const {
-  // @@protoc_insertion_point(field_get:orc_proto.Row.field)
-  return field_.Get(index);
+inline const ::orc_proto::Field& Row::fields(int index) const {
+  // @@protoc_insertion_point(field_get:orc_proto.Row.fields)
+  return fields_.Get(index);
 }
-inline ::orc_proto::Field* Row::mutable_field(int index) {
-  // @@protoc_insertion_point(field_mutable:orc_proto.Row.field)
-  return field_.Mutable(index);
+inline ::orc_proto::Field* Row::mutable_fields(int index) {
+  // @@protoc_insertion_point(field_mutable:orc_proto.Row.fields)
+  return fields_.Mutable(index);
 }
-inline ::orc_proto::Field* Row::add_field() {
-  // @@protoc_insertion_point(field_add:orc_proto.Row.field)
-  return field_.Add();
+inline ::orc_proto::Field* Row::add_fields() {
+  // @@protoc_insertion_point(field_add:orc_proto.Row.fields)
+  return fields_.Add();
 }
 inline ::google::protobuf::RepeatedPtrField< ::orc_proto::Field >*
-Row::mutable_field() {
-  // @@protoc_insertion_point(field_mutable_list:orc_proto.Row.field)
-  return &field_;
+Row::mutable_fields() {
+  // @@protoc_insertion_point(field_mutable_list:orc_proto.Row.fields)
+  return &fields_;
 }
 inline const ::google::protobuf::RepeatedPtrField< ::orc_proto::Field >&
-Row::field() const {
-  // @@protoc_insertion_point(field_list:orc_proto.Row.field)
-  return field_;
+Row::fields() const {
+  // @@protoc_insertion_point(field_list:orc_proto.Row.fields)
+  return fields_;
 }
 
 #ifdef __GNUC__

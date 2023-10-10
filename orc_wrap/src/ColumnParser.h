@@ -9,11 +9,12 @@ namespace orc {
 
 class ColumnParser {
 protected:
-    orc_proto::Row  row;
+    orc_proto::Row  *row;
     std::string     encoded_row;
+    char            *encoded_row2;
 
 public:
-    ColumnParser();
+    ColumnParser(orc_proto::Row *);
     
     virtual ~ColumnParser();
 
@@ -21,10 +22,10 @@ public:
 
     virtual void reset(const orc::ColumnVectorBatch& batch);
 
-    const char* getEncodedRow();
+    char* getEncodedRow();
 };
 
-ORC_UNIQUE_PTR<ColumnParser> _createColumnParser(const orc::Type* type);
+std::unique_ptr<orc::ColumnParser> _createColumnParser(orc_proto::Row *_row, const orc::Type* type);
 
 }// namespace
 

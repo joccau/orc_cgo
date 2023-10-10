@@ -131,7 +131,7 @@ const ::google::protobuf::uint32 TableStruct::offsets[] GOOGLE_PROTOBUF_ATTRIBUT
   ~0u,  // no _extensions_
   ~0u,  // no _oneof_case_
   ~0u,  // no _weak_field_map_
-  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::orc_proto::Row, field_),
+  GOOGLE_PROTOBUF_GENERATED_MESSAGE_FIELD_OFFSET(::orc_proto::Row, fields_),
 };
 static const ::google::protobuf::internal::MigrationSchema schemas[] GOOGLE_PROTOBUF_ATTRIBUTE_SECTION_VARIABLE(protodesc_cold) = {
   { 0, -1, sizeof(::orc_proto::Type)},
@@ -179,11 +179,11 @@ void AddDescriptorsImpl() {
       "\022\013\n\007VARCHAR\020\020\022\010\n\004CHAR\020\021\022\025\n\021TIMESTAMP_INS"
       "TANT\020\022\"P\n\005Field\022\035\n\004type\030\001 \001(\0132\017.orc_prot"
       "o.Type\022\t\n\001i\030\002 \001(\003\022\r\n\005value\030\004 \001(\014\022\016\n\006leng"
-      "th\030\003 \001(\r\"&\n\003Row\022\037\n\005field\030\001 \003(\0132\020.orc_pro"
-      "to.FieldB\rZ\013./orc_protob\006proto3"
+      "th\030\003 \001(\r\"\'\n\003Row\022 \n\006fields\030\001 \003(\0132\020.orc_pr"
+      "oto.FieldB\rZ\013./orc_protob\006proto3"
   };
   ::google::protobuf::DescriptorPool::InternalAddGeneratedFile(
-      descriptor, 551);
+      descriptor, 552);
   ::google::protobuf::MessageFactory::InternalRegisterGeneratedFile(
     "orc_wrap.proto", &protobuf_RegisterTypes);
 }
@@ -1103,7 +1103,7 @@ void Field::InternalSwap(Field* other) {
 void Row::InitAsDefaultInstance() {
 }
 #if !defined(_MSC_VER) || _MSC_VER >= 1900
-const int Row::kFieldFieldNumber;
+const int Row::kFieldsFieldNumber;
 #endif  // !defined(_MSC_VER) || _MSC_VER >= 1900
 
 Row::Row()
@@ -1117,7 +1117,7 @@ Row::Row()
 Row::Row(const Row& from)
   : ::google::protobuf::Message(),
       _internal_metadata_(NULL),
-      field_(from.field_),
+      fields_(from.fields_),
       _cached_size_(0) {
   _internal_metadata_.MergeFrom(from._internal_metadata_);
   // @@protoc_insertion_point(copy_constructor:orc_proto.Row)
@@ -1164,7 +1164,7 @@ void Row::Clear() {
   // Prevent compiler warnings about cached_has_bits being unused
   (void) cached_has_bits;
 
-  field_.Clear();
+  fields_.Clear();
   _internal_metadata_.Clear();
 }
 
@@ -1178,11 +1178,11 @@ bool Row::MergePartialFromCodedStream(
     tag = p.first;
     if (!p.second) goto handle_unusual;
     switch (::google::protobuf::internal::WireFormatLite::GetTagFieldNumber(tag)) {
-      // repeated .orc_proto.Field field = 1;
+      // repeated .orc_proto.Field fields = 1;
       case 1: {
         if (static_cast< ::google::protobuf::uint8>(tag) ==
             static_cast< ::google::protobuf::uint8>(10u /* 10 & 0xFF */)) {
-          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(input, add_field()));
+          DO_(::google::protobuf::internal::WireFormatLite::ReadMessage(input, add_fields()));
         } else {
           goto handle_unusual;
         }
@@ -1215,11 +1215,11 @@ void Row::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .orc_proto.Field field = 1;
+  // repeated .orc_proto.Field fields = 1;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->field_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->fields_size()); i < n; i++) {
     ::google::protobuf::internal::WireFormatLite::WriteMessageMaybeToArray(
-      1, this->field(static_cast<int>(i)), output);
+      1, this->fields(static_cast<int>(i)), output);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1236,12 +1236,12 @@ void Row::SerializeWithCachedSizes(
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  // repeated .orc_proto.Field field = 1;
+  // repeated .orc_proto.Field fields = 1;
   for (unsigned int i = 0,
-      n = static_cast<unsigned int>(this->field_size()); i < n; i++) {
+      n = static_cast<unsigned int>(this->fields_size()); i < n; i++) {
     target = ::google::protobuf::internal::WireFormatLite::
       InternalWriteMessageToArray(
-        1, this->field(static_cast<int>(i)), deterministic, target);
+        1, this->fields(static_cast<int>(i)), deterministic, target);
   }
 
   if ((_internal_metadata_.have_unknown_fields() &&  ::google::protobuf::internal::GetProto3PreserveUnknownsDefault())) {
@@ -1261,14 +1261,14 @@ size_t Row::ByteSizeLong() const {
       ::google::protobuf::internal::WireFormat::ComputeUnknownFieldsSize(
         (::google::protobuf::internal::GetProto3PreserveUnknownsDefault()   ? _internal_metadata_.unknown_fields()   : _internal_metadata_.default_instance()));
   }
-  // repeated .orc_proto.Field field = 1;
+  // repeated .orc_proto.Field fields = 1;
   {
-    unsigned int count = static_cast<unsigned int>(this->field_size());
+    unsigned int count = static_cast<unsigned int>(this->fields_size());
     total_size += 1UL * count;
     for (unsigned int i = 0; i < count; i++) {
       total_size +=
         ::google::protobuf::internal::WireFormatLite::MessageSize(
-          this->field(static_cast<int>(i)));
+          this->fields(static_cast<int>(i)));
     }
   }
 
@@ -1301,7 +1301,7 @@ void Row::MergeFrom(const Row& from) {
   ::google::protobuf::uint32 cached_has_bits = 0;
   (void) cached_has_bits;
 
-  field_.MergeFrom(from.field_);
+  fields_.MergeFrom(from.fields_);
 }
 
 void Row::CopyFrom(const ::google::protobuf::Message& from) {
@@ -1328,7 +1328,7 @@ void Row::Swap(Row* other) {
 }
 void Row::InternalSwap(Row* other) {
   using std::swap;
-  field_.InternalSwap(&other->field_);
+  fields_.InternalSwap(&other->fields_);
   _internal_metadata_.Swap(&other->_internal_metadata_);
   swap(_cached_size_, other->_cached_size_);
 }

@@ -106,7 +106,6 @@ func CreateColumnParser(t Type) ColumnParser {
 }
 
 func (cp *ColumnParser) Reset(cvb ColumnVectorBatch) {
-	fmt.Println(cp.ptr, " ", cvb.ptr)
 	C.reset(cp.ptr, cvb.ptr)
 }
 
@@ -116,6 +115,9 @@ func (cp *ColumnParser) ParseRow(rowID uint64) {
 
 func (cp *ColumnParser) GetEncodedRow() []byte {
 	data := C.getEncodedRow(cp.ptr)
-	goData := C.GoString(data)
-	return []byte(goData)
+	goData := C.GoStringN(data, 12)
+
+	output := []byte(goData)
+	fmt.Println("output row len = ", len(output))
+	return output
 }

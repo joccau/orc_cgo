@@ -17,6 +17,8 @@ import (
 	"reflect"
 
 	orc_proto "orc_cgo/utils/orc_proto"
+
+	"github.com/gogo/protobuf/proto"
 )
 
 func testRead() {
@@ -42,17 +44,20 @@ func testReadContent() {
 	cvb := rowReader.CreateRowBatch(10)
 	columnParser := orc_read.CreateColumnParser(rowReader.GetSelectedType())
 
-	// var i uint64
+	var i uint64
 	for rowReader.Next(cvb) {
 		columnParser.Reset(cvb)
-		// for i = 0; i < cvb.ColumnVectorBatchGetNumElements(); i++ {
-		// 	columnParser.ParseRow(i)
-		// 	data := columnParser.GetEncodedRow()
+		fmt.Println("getNumElements", cvb.ColumnVectorBatchGetNumElements())
+		for i = 0; i < cvb.ColumnVectorBatchGetNumElements(); i++ {
+			columnParser.ParseRow(i)
+			data := columnParser.GetEncodedRow()
 
-		// 	r := &orc_proto.Row{}
-		// 	proto.Unmarshal(data, r)
-		// 	printRow(r)
-		// }
+			fmt.Println("len(data)=", len(data))
+
+			r := &orc_proto.Row{}
+			proto.Unmarshal(data, r)
+			printRow(r)
+		}
 	}
 }
 

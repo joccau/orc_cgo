@@ -37,7 +37,7 @@ void seekToRow(RowReader* row_reader_ptr, uint64_t rowNumber);
 
 // about ColumnParser
 ColumnParser* createColumnParser(Type* t);
-const char* getEncodedRow(ColumnParser *ptr);
+char* getEncodedRow(ColumnParser *ptr);
 void parseRow(ColumnParser *ptr, uint64_t rowID);
 void reset(ColumnParser *parserPtr, ColumnVectorBatch *batchPtr);
 

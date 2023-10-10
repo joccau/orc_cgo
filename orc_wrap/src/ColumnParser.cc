@@ -18,7 +18,7 @@ void ColumnParser::reset(const orc::ColumnVectorBatch& batch) {
 }
 
 const char* ColumnParser::getEncodedRow() {
-    // row.SerializeToString(&encoded_row);
+    row.SerializeToString(&encoded_row);
     return encoded_row.data();
 }
 
@@ -113,6 +113,7 @@ public:
 StructColumnParser::StructColumnParser(const orc::Type &type
     ): ColumnParser() {
     for(int i = 0; i < type.getSubtypeCount(); ++i) {
+        printf("subtype = %d, fieldname=%s\n", type.getSubtype(i)->getKind(), type.getFieldName(i).c_str());
         fieldNames.push_back(type.getFieldName(i));
         fieldParser.push_back(_createColumnParser(type.getSubtype(i)));
     } 
@@ -136,10 +137,10 @@ void StructColumnParser::reset(const orc::ColumnVectorBatch& batch) {
 
 /////////////////////////////////////////////////////////////////////////////////
 // _createColumnParser create a ColumnParser with type.
-ORC_UNIQUE_PTR<ColumnParser> _createColumnParser(const orc::Type* type) {
+std::unique_ptr<orc::ColumnParser> _createColumnParser(const orc::Type* type) {
     ColumnParser *result = nullptr;
     
-    if (!type) {
+    if (type) {
         switch(static_cast<int64_t>(type->getKind())) {
         case orc::BOOLEAN:
             result = new BooleanColumnParser();
@@ -178,11 +179,11 @@ ORC_UNIQUE_PTR<ColumnParser> _createColumnParser(const orc::Type* type) {
         case MAP:
             result = new MapColumnPrinter(buffer, *type);
             break;
-
+        */
         case STRUCT:
-            result = new StructColumnPrinter(buffer, *type);
+            result = new StructColumnParser(*type);
             break;
-
+        /*
         case DECIMAL:
             if (type->getPrecision() == 0 || type->getPrecision() > 18) {
             result = new Decimal128ColumnPrinter(buffer);
@@ -204,7 +205,8 @@ ORC_UNIQUE_PTR<ColumnParser> _createColumnParser(const orc::Type* type) {
         }
     }
 
-    return std::unique_ptr<ColumnParser>(result);;
+    printf("result = %p\n", result);
+    return std::unique_ptr<orc::ColumnParser>(result);;
 }
 
 }// namespace

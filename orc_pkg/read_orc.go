@@ -8,6 +8,7 @@ package orc_read
 import "C"
 
 import (
+	"fmt"
 	"unsafe"
 )
 
@@ -90,12 +91,31 @@ type ColumnVectorBatch struct {
 	ptr unsafe.Pointer
 }
 
+func (cvb *ColumnVectorBatch) ColumnVectorBatchGetNumElements() uint64 {
+	numElements := C.columnVectorBatchGetNumElements(cvb.ptr)
+	return uint64(numElements)
+}
+
 type ColumnParser struct {
 	ptr unsafe.Pointer
 }
 
 func CreateColumnParser(t Type) ColumnParser {
-	// cp := C.createColumnParser(t.ptr)
-	// return ColumnParser{cp}
-	return ColumnParser{}
+	cp := C.createColumnParser(t.ptr)
+	return ColumnParser{cp}
+}
+
+func (cp *ColumnParser) Reset(cvb ColumnVectorBatch) {
+	fmt.Println(cp.ptr, " ", cvb.ptr)
+	C.reset(cp.ptr, cvb.ptr)
+}
+
+func (cp *ColumnParser) ParseRow(rowID uint64) {
+	C.parseRow(cp.ptr, C.ulonglong(rowID))
+}
+
+func (cp *ColumnParser) GetEncodedRow() []byte {
+	data := C.getEncodedRow(cp.ptr)
+	goData := C.GoString(data)
+	return []byte(goData)
 }

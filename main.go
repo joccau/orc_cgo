@@ -15,9 +15,11 @@ import (
 	"fmt"
 	orc_read "orc_cgo/orc_pkg"
 	"reflect"
+
+	orc_proto "orc_cgo/utils/orc_proto"
 )
 
-func test_read() {
+func testRead() {
 	filepath := "./orc_wrap/orc-1.8.5/examples/TestOrcFile.test1.orc"
 
 	r := orc_read.CreateReader(filepath)
@@ -30,14 +32,31 @@ func test_read() {
 	fmt.Println("the number of stripe is ", cnt)
 }
 
-func test_read_content() {
+func testReadContent() {
 	filepath := "./orc_wrap/orc-1.8.5/examples/TestOrcFile.test1.orc"
 	reader := orc_read.CreateReader(filepath)
 	defer reader.Close()
 	rowReader := reader.CreateRowReader()
 	defer rowReader.Close()
 
-	rowReader.CreateRowBatch(10)
+	cvb := rowReader.CreateRowBatch(10)
+	columnParser := orc_read.CreateColumnParser(rowReader.GetSelectedType())
+
+	// var i uint64
+	for rowReader.Next(cvb) {
+		columnParser.Reset(cvb)
+		// for i = 0; i < cvb.ColumnVectorBatchGetNumElements(); i++ {
+		// 	columnParser.ParseRow(i)
+		// 	data := columnParser.GetEncodedRow()
+
+		// 	r := &orc_proto.Row{}
+		// 	proto.Unmarshal(data, r)
+		// 	printRow(r)
+		// }
+	}
+}
+
+func printRow(r *orc_proto.Row) {
 
 }
 
@@ -53,11 +72,10 @@ func case1() {
 		fmt.Println(t.Name(), " ", v.Kind().String(), " ", v)
 
 	}
-
 }
 
 func main() {
-	test_read()
-	test_read_content()
+	// testRead()
+	testReadContent()
 	//case1()
 }

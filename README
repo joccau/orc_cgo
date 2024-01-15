@@ -1,1 +1,5 @@
 This is a cgo project that provides encapsulation of the orc interface.
+
+Reference:
+The doc about cgo
+https://chai2010.cn/advanced-go-programming-book/ch2-cgo/ch2-02-basic.html
